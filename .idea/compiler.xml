@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SM2048" />
+        <module name="20297487_SM" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="20297487_SM" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
