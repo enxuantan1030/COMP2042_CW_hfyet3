@@ -18,10 +18,10 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class Main extends Application {
-    static final int WIDTH = 900;
-    static final int HEIGHT = 900;
+    static final int WIDTH = 1300;
+    static final int HEIGHT = 1000;
     private Group gameRoot = new Group();
-    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
+    private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
     private static Scanner input= new Scanner(System.in);
 
     public void setGameScene(Scene gameScene) {
@@ -54,14 +54,14 @@ public class Main extends Application {
         backgroundOfMenu.setY(180);
         menuRoot.getChildren().add(backgroundOfMenu);
 
-        Rectangle backgroundOfMenuForPlay = new Rectangle(240, 140, Color.rgb(120, 20, 100, 0.2));
+        Rectangle backgroundOfMenuForPlay = new Rectangle(240, 140, Color.rgb(80, 71, 143));
         backgroundOfMenuForPlay.setX(WIDTH / 2 - 120);
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
 
         Group gameRoot = new Group();
         setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
         GameScene game = new GameScene();

@@ -65,13 +65,13 @@ public class Cell {
                 rectangle.setFill(Color.rgb(224, 226, 226, 0.5));
                 break;
             case 2:
-                rectangle.setFill(Color.rgb(232, 255, 100, 0.5));
+                rectangle.setFill(Color.rgb(100, 185, 255, 0.5));
                 break;
             case 4:
-                rectangle.setFill(Color.rgb(232, 220, 50, 0.5));
+                rectangle.setFill(Color.rgb(50, 168, 232, 0.5));
                 break;
             case 8:
-                rectangle.setFill(Color.rgb(232, 200, 44, 0.8));
+                rectangle.setFill(Color.rgb(44, 119, 232, 0.8));
                 break;
             case 16:
                 rectangle.setFill(Color.rgb(232, 170, 44, 0.8));
