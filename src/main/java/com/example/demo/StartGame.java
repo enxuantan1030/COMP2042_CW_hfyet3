@@ -14,5 +14,8 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
+import static javafx.application.Application.launch;
+
 public class StartGame {
 }
+
