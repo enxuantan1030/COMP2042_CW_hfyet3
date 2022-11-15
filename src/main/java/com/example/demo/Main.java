@@ -33,6 +33,9 @@ public class Main extends Application {
     }
 
     @Override
+    /**
+     *
+     */
     public void start(Stage primaryStage) throws Exception {
 
         Group menuRoot = new Group();
@@ -41,6 +44,8 @@ public class Main extends Application {
         Scene accountScene = new Scene(accountRoot, WIDTH, HEIGHT, Color.rgb(150, 20, 100, 0.2));
         Group getAccountRoot = new Group();
         Scene getAccountScene = new Scene(getAccountRoot, WIDTH, HEIGHT, Color.rgb(200, 20, 100, 0.2));
+        Group startgameRoot = new Group();
+        Scene startGameScene = new Scene(startgameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
         Group endgameRoot = new Group();
         Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
         Group rankRoot = new Group();
@@ -65,7 +70,7 @@ public class Main extends Application {
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
+        game.game(gameScene, gameRoot, primaryStage, startGameScene, endGameScene, startgameRoot,  endgameRoot);
 
         primaryStage.show();
     }

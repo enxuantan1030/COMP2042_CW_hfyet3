@@ -256,8 +256,16 @@ class GameScene {
         }
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    void game(Scene gameScene, Group root, Stage primaryStage,Scene startGameScene, Scene endGameScene, Group startGameRoot, Group endGameRoot) {
         this.root = root;
+
+        primaryStage.setScene(startGameScene);
+
+        StartGame.getInstance().startGameShow(startGameScene, startGameRoot, primaryStage);
+        root.getChildren().clear();
+        score = 0;
+        stage.close();
+        0
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,

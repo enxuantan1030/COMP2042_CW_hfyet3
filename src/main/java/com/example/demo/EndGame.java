@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -27,6 +26,7 @@ public class EndGame {
         return singleInstance;
     }
 
+    //used in GameScene.java line 302
     public void endGameShow(Scene endGameScene, Group root, Stage primaryStage,long score){
         Text text = new Text("GAME OVER");
         text.relocate(230,250);
