@@ -1,25 +1,41 @@
-package com.example.demo;
+package com.example.sm2048;
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Optional;
 import java.util.Random;
 
 class GameScene {
+
+    private static GameScene singleInstance = null;
+
+    public static GameScene getInstance(){
+        if(singleInstance == null)
+            singleInstance= new GameScene();
+        return singleInstance;
+    }
+
     private static int HEIGHT = 700;
     private static int n = 4;
     private final static int distanceBetweenCells = 10;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
     private Cell[][] cells = new Cell[n][n];
-    private Group root;
     private long score = 0;
+    private Group GameRoot;
 
     static void setN(int number) {
         n = number;
@@ -67,14 +83,14 @@ class GameScene {
             xCell = random.nextInt(aForBound+1);
             yCell = random.nextInt(bForBound+1);
         if (putTwo) {
-            text = textMaker.madeText("2", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
+            text = textMaker.madeText("2", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), GameRoot);
             emptyCells[xCell][yCell].setTextClass(text);
-            root.getChildren().add(text);
+            GameRoot.getChildren().add(text);
             emptyCells[xCell][yCell].setColorByNumber(2);
         } else {
-            text = textMaker.madeText("4", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), root);
+            text = textMaker.madeText("4", emptyCells[xCell][yCell].getX(), emptyCells[xCell][yCell].getY(), GameRoot);
             emptyCells[xCell][yCell].setTextClass(text);
-            root.getChildren().add(text);
+            GameRoot.getChildren().add(text);
             emptyCells[xCell][yCell].setColorByNumber(4);
         }
     }
@@ -256,31 +272,24 @@ class GameScene {
         }
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage,Scene startGameScene, Scene endGameScene, Group startGameRoot, Group endGameRoot) {
-        this.root = root;
+    public void play(Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
 
-        primaryStage.setScene(startGameScene);
-
-        StartGame.getInstance().startGameShow(startGameScene, startGameRoot, primaryStage);
-        root.getChildren().clear();
-        score = 0;
-        stage.close();
-        0
+        this.GameRoot = GameRoot;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
-                        (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
+                        (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, GameRoot);
             }
 
         }
 
-        Text text = new Text();
-        root.getChildren().add(text);
-        text.setText("SCORE :");
-        text.setFont(Font.font(30));
-        text.relocate(750, 100);
+        Text menutext = new Text();
+        GameRoot.getChildren().add(menutext);
+        menutext.setText("SCORE :");
+        menutext.setFont(Font.font(30));
+        menutext.relocate(750, 100);
         Text scoreText = new Text();
-        root.getChildren().add(scoreText);
+        GameRoot.getChildren().add(scoreText);
         scoreText.relocate(750, 150);
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
@@ -289,31 +298,32 @@ class GameScene {
         randomFillNumber(1);
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
-                Platform.runLater(() -> {
-                    int haveEmptyCell;
-                    if (key.getCode() == KeyCode.DOWN) {
-                        GameScene.this.moveDown();
-                    } else if (key.getCode() == KeyCode.UP) {
-                        GameScene.this.moveUp();
-                    } else if (key.getCode() == KeyCode.LEFT) {
-                        GameScene.this.moveLeft();
-                    } else if (key.getCode() == KeyCode.RIGHT) {
-                        GameScene.this.moveRight();
-                    }
-                    GameScene.this.sumCellNumbersToScore();
-                    scoreText.setText(score + "");
-                    haveEmptyCell = GameScene.this.haveEmptyCell();
-                    if (haveEmptyCell == -1) {
-                        if (GameScene.this.canNotMove()) {
-                            primaryStage.setScene(endGameScene);
+            Platform.runLater(() -> {
+                int haveEmptyCell;
+                if (key.getCode() == KeyCode.DOWN) {
+                    GameScene.this.moveDown();
+                } else if (key.getCode() == KeyCode.UP) {
+                    GameScene.this.moveUp();
+                } else if (key.getCode() == KeyCode.LEFT) {
+                    GameScene.this.moveLeft();
+                } else if (key.getCode() == KeyCode.RIGHT) {
+                    GameScene.this.moveRight();
+                }
+                GameScene.this.sumCellNumbersToScore();
+                scoreText.setText(score + "");
+                haveEmptyCell = GameScene.this.haveEmptyCell();
+                if (haveEmptyCell == -1) {
+                    if (GameScene.this.canNotMove()) {
+                        primaryStage.setScene(endGameScene);
 
-                            EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
-                            root.getChildren().clear();
-                            score = 0;
-                        }
-                    } else if(haveEmptyCell == 1)
-                        GameScene.this.randomFillNumber(2);
-                });
+                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
+                        GameRoot.getChildren().clear();
+                        score = 0;
+                    }
+                } else if(haveEmptyCell == 1)
+                    GameScene.this.randomFillNumber(2);
             });
+        });
     }
+
 }

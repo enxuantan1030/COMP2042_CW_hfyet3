@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.sm2048;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;

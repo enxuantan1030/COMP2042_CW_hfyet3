@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.sm2048;
 
 public class Controller {
 }

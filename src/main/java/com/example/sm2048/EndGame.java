@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.sm2048;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -17,9 +17,7 @@ import java.util.Optional;
 
 public class EndGame {
     private static EndGame singleInstance = null;
-    private EndGame(){
 
-    }
     public static EndGame getInstance(){
         if(singleInstance == null)
             singleInstance= new EndGame();
@@ -57,7 +55,7 @@ public class EndGame {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
                     root.getChildren().clear();
-                    //ButtonType.setOnAction(e -> Platform.exit());
+                    System.exit(1);
                 }
             }
         });
