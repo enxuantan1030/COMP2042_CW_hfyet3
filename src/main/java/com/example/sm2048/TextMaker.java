@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-class TextMaker {
+public class TextMaker {
     private static TextMaker singleInstance = null;
 
     private TextMaker() {

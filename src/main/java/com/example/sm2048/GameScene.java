@@ -1,24 +1,19 @@
 package com.example.sm2048;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.Optional;
 import java.util.Random;
 
-class GameScene {
+public class GameScene {
 
     private static GameScene singleInstance = null;
 
@@ -272,9 +267,10 @@ class GameScene {
         }
     }
 
-    public void play(Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
+    public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
 
         this.GameRoot = GameRoot;
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
@@ -283,15 +279,20 @@ class GameScene {
 
         }
 
-        Text menutext = new Text();
-        GameRoot.getChildren().add(menutext);
-        menutext.setText("SCORE :");
-        menutext.setFont(Font.font(30));
-        menutext.relocate(750, 100);
+        Text score = new Text();
+        GameRoot.getChildren().add(score);
+        score.setText("SCORE :");
+        score.setFont(Font.font("Courier New", FontWeight.BOLD,30));
+        score.setFill(Color.web("#E5E7E9"));
+        score.setStroke(Color.BLACK);
+        score.relocate(750, 100);
+
         Text scoreText = new Text();
         GameRoot.getChildren().add(scoreText);
         scoreText.relocate(750, 150);
-        scoreText.setFont(Font.font(20));
+        scoreText.setFont(Font.font("Courier New", FontWeight.BOLD, 30));
+        scoreText.setFill(Color.web("#E5E7E9"));
+        scoreText.setStroke(Color.BLACK);
         scoreText.setText("0");
 
         randomFillNumber(1);
@@ -310,20 +311,21 @@ class GameScene {
                     GameScene.this.moveRight();
                 }
                 GameScene.this.sumCellNumbersToScore();
-                scoreText.setText(score + "");
+                scoreText.setText(this.score + "");
                 haveEmptyCell = GameScene.this.haveEmptyCell();
                 if (haveEmptyCell == -1) {
                     if (GameScene.this.canNotMove()) {
                         primaryStage.setScene(endGameScene);
 
-                        EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
+                        EndGame.getInstance().endGameShow(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score);
                         GameRoot.getChildren().clear();
-                        score = 0;
+                        this.score = 0;
                     }
                 } else if(haveEmptyCell == 1)
                     GameScene.this.randomFillNumber(2);
             });
         });
+
     }
 
 }

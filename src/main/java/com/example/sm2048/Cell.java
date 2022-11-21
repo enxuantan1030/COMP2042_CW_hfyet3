@@ -71,31 +71,31 @@ public class Cell {
                 rectangle.setFill(Color.rgb(50, 168, 232, 0.5));
                 break;
             case 8:
-                rectangle.setFill(Color.rgb(44, 119, 232, 0.8));
+                rectangle.setFill(Color.rgb(44, 119, 232, 0.5));
                 break;
             case 16:
-                rectangle.setFill(Color.rgb(232, 170, 44, 0.8));
+                rectangle.setFill(Color.rgb(44, 88, 232, 0.5));
                 break;
             case 32:
-                rectangle.setFill(Color.rgb(180, 120, 44, 0.7));
+                rectangle.setFill(Color.rgb(44, 76, 180, 0.5));
                 break;
             case 64:
-                rectangle.setFill(Color.rgb(180, 100, 44, 0.7));
+                rectangle.setFill(Color.rgb(53, 44, 180, 0.5));
                 break;
             case 128:
-                rectangle.setFill(Color.rgb(180, 80, 44, 0.7));
+                rectangle.setFill(Color.rgb(44, 67, 180, 0.5));
                 break;
             case 256:
-                rectangle.setFill(Color.rgb(180, 60, 44, 0.8));
+                rectangle.setFill(Color.rgb(73, 44, 180, 0.5));
                 break;
             case 512:
-                rectangle.setFill(Color.rgb(180, 30, 44, 0.8));
+                rectangle.setFill(Color.rgb(58, 30, 180, 0.5));
                 break;
             case 1024:
-                rectangle.setFill(Color.rgb(250, 0, 44, 0.8));
+                rectangle.setFill(Color.rgb(71, 0, 150, 0.5));
                 break;
             case 2048:
-                rectangle.setFill(Color.rgb(250,0,0,1));
+                rectangle.setFill(Color.rgb(92,0,250,0.5));
 
 
         }
