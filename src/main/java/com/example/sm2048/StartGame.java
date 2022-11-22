@@ -34,7 +34,13 @@ public class StartGame{
      *
      * This method is used to create the Menu Scene
      *
-     * @param
+     * @param startGameScene Scene to create Menu Scene
+     * @param root root for startGameScene
+     * @param primaryStage Stage which display the Scenes
+     * @param gameScene Scene for playing the game 2048
+     * @param endgameScene Scene when game is game is ended, which will display GAME OVER Scene 
+     * @param GameRoot root for gameScene
+     * @param Endgame Root root for endgameScene
      */
 
         void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
@@ -50,13 +56,13 @@ public class StartGame{
 
             GameScene game = new GameScene();
 
-            //Choose colour theme
+            //Display "Choose colour theme"
             Text theme = new Text("Choose colour theme");
             theme.relocate(310,500);
             theme.setFont(Font.font("Courier New", 30));
             root.getChildren().add(theme);
 
-            //dropdown menu for choose theme colour in game
+            //Drop down menu for choosing theme colour in game
             Group gameRooot = new Group();
             final ComboBox themedropbox = new ComboBox();
             themedropbox.getItems().addAll(
@@ -72,7 +78,7 @@ public class StartGame{
             themedropbox.relocate(390,530);
             themedropbox.setValue("Default(Black)");
 
-            //menu start button
+            //Menu start button
             Button startButton = new Button("START");
             startButton.setPrefSize(200,60);
             startButton.setTextFill(Color.rgb(0,0,102));
@@ -81,8 +87,10 @@ public class StartGame{
             startButton.relocate(260,400);
             //when start button is clicked, it will be directed to the game scene
             startButton.setOnAction(actionEvent ->  {
-                //game scene background colour is based on user selection
+                /*game scene background colour is based on user selection
+                  so if user choose blue, the background colour for gamescene and endgameScene will be blue*/
                 if (themedropbox.getValue() == "Blue"){
+                        //Gradient colour function referred to website -  
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -94,7 +102,7 @@ public class StartGame{
                             new Stop(0, Color.web("#1A5276")),
                             new Stop(1, Color.web("#AED6F1"))));
                 }
-
+                //Option Yellow
                 else if (themedropbox.getValue() == "Yellow"){
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
@@ -107,7 +115,7 @@ public class StartGame{
                             new Stop(0, Color.web("#7D6608")),
                             new Stop(1, Color.web("#FAD7A0"))));
                 }
-
+                //Option Green
                 else if (themedropbox.getValue() == "Green"){
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
@@ -120,7 +128,7 @@ public class StartGame{
                             new Stop(0, Color.web("#0B5345")),
                             new Stop(1, Color.web("#A9DFBF"))));
                 }
-
+                //Option Pink
                 else if (themedropbox.getValue() == "Pink"){
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
@@ -133,7 +141,7 @@ public class StartGame{
                             new Stop(0, Color.web("#78281F")),
                             new Stop(1, Color.web("#FADBD8"))));
                 }
-
+                //Option Purple
                 else if (themedropbox.getValue() == "Purple"){
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
@@ -146,7 +154,7 @@ public class StartGame{
                             new Stop(0, Color.web("#4A235A")),
                             new Stop(1, Color.web("#D7BDE2"))));
                 }
-
+                //Default Colour set to Black
                 else{
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
@@ -159,8 +167,9 @@ public class StartGame{
                             new Stop(0, Color.web("#1B2631")),
                             new Stop(1, Color.web("#85929E"))));
                 }
-
+                //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
+                //links the Scene to GameScene.play method
                 GameScene.getInstance().play(startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
                 root.getChildren().clear();
 
@@ -170,18 +179,21 @@ public class StartGame{
             //menu quit button
             Button menuquitButton = new Button("QUIT");
             menuquitButton.setPrefSize(200,60);
+            //set button word colour
             menuquitButton.setTextFill(Color.rgb(0,0,102));
+            //set font type, bold and size for menu quit button
             menuquitButton.setFont(Font.font("Courier New", FontWeight.BOLD, 20));
+            //add menu quite button to the root
             root.getChildren().add(menuquitButton);
             menuquitButton.relocate(520,400);
-            //when the quit button is clicked, it will terminate the program
+            //when the quit button is clicked, a wondpw will pop out and ask for confirmation
             menuquitButton.setOnAction(actionEvent ->  {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Quit Dialog");
                 alert.setHeaderText("Quit from this page");
                 alert.setContentText("Are you sure?");
-
-                //alert window
+                
+                //when "ok" is clickeed, it will terminate the program
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
                     root.getChildren().clear();
