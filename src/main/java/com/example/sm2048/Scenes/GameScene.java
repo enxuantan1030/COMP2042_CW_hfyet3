@@ -1,8 +1,12 @@
-package com.example.sm2048;
+package com.example.sm2048.Scenes;
 
+import com.example.sm2048.Cell;
+import com.example.sm2048.TextMaker;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -11,6 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class GameScene {
@@ -37,7 +42,7 @@ public class GameScene {
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }
 
-    static double getLENGTH() {
+    public static double getLENGTH() {
         return LENGTH;
     }
 
@@ -213,6 +218,7 @@ public class GameScene {
 
     private void moveHorizontally(int i, int j, int des, int sign) {
         if (isValidDesH(i, j, des, sign)) {
+            score += cells[i][j].getNumber()*2;
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
         } else if (des != j) {
@@ -231,6 +237,7 @@ public class GameScene {
 
     private void moveVertically(int i, int j, int des, int sign) {
         if (isValidDesV(i, j, des, sign)) {
+            score += cells[i][j].getNumber()*2;
             cells[i][j].adder(cells[des + sign][j]);
             cells[des][j].setModify(true);
         } else if (des != i) {
@@ -260,11 +267,14 @@ public class GameScene {
     }
 
     private void sumCellNumbersToScore() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                score += cells[i][j].getNumber();
+
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                        score +=0;
+                }
             }
-        }
+
+
     }
 
     public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
@@ -295,6 +305,13 @@ public class GameScene {
         scoreText.setStroke(Color.BLACK);
         scoreText.setText("0");
 
+        Text intruct = new Text();
+        GameRoot.getChildren().add(intruct);
+        intruct.setText("Shortcuts:\nPress M - Return Menu\nPress Esc - Quit Game");
+        intruct.setFont(Font.font("Courier New", FontWeight.BOLD,20));
+        intruct.setFill(Color.web("#E5E7E9"));
+        intruct.relocate(720, 625);
+
         randomFillNumber(1);
         randomFillNumber(1);
 
@@ -309,7 +326,34 @@ public class GameScene {
                     GameScene.this.moveLeft();
                 } else if (key.getCode() == KeyCode.RIGHT) {
                     GameScene.this.moveRight();
+                } else if (key.getCode() == KeyCode.ESCAPE) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Quit Dialog");
+                    alert.setHeaderText("Quit from this page");
+                    alert.setContentText("Are you sure?");
+
+                    //when "ok" is clicked, it will terminate the program
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK){
+                        GameRoot.getChildren().clear();
+                        System.exit(1);
+                    }
+                } else if (key.getCode() == KeyCode.M) {
+                    Alert gamealert = new Alert(Alert.AlertType.CONFIRMATION);
+                    gamealert.setTitle("Dialog Menu");
+                    gamealert.setHeaderText("Back to Menu");
+                    gamealert.setContentText("All the progress made will not be saved, Continue?");
+
+                    //when "ok" is clicked, it will return user to menu page
+                    Optional<ButtonType> gameresult = gamealert.showAndWait();
+                    if (gameresult.get() == ButtonType.OK){
+                        primaryStage.setScene(startgameScene);
+                        //link back to menu
+                        StartGame.getInstance().game(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot);
+                        endGameRoot.getChildren().clear();
+                    }
                 }
+
                 GameScene.this.sumCellNumbersToScore();
                 scoreText.setText(this.score + "");
                 haveEmptyCell = GameScene.this.haveEmptyCell();
@@ -321,7 +365,7 @@ public class GameScene {
                         GameRoot.getChildren().clear();
                         this.score = 0;
                     }
-                } else if(haveEmptyCell == 1)
+                } else if(haveEmptyCell == 1 && key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.UP || key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.RIGHT)
                     GameScene.this.randomFillNumber(2);
             });
         });

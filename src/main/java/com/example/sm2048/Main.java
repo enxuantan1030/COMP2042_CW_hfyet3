@@ -2,6 +2,7 @@ package com.example.sm2048;
 
 import java.io.IOException;
 
+import com.example.sm2048.Scenes.StartGame;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;

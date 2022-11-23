@@ -1,4 +1,4 @@
-package com.example.sm2048;
+package com.example.sm2048.Scenes;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -15,8 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-
-public class EndGame {
+public class Username {
     private static EndGame singleInstance = null;
     private Group endGameRoot;
 
@@ -30,17 +29,17 @@ public class EndGame {
      *
      * This method is used to create the Game Over Scene
      *
-     * @param startGameScene Scene to create Menu Scene
+     * @param startgameScene Scene to create Menu Scene
      * @param root root for startGameScene
      * @param primaryStage Stage which display the Scenes
      * @param gameScene Scene for playing the game 2048
-     * @param endgameScene Scene when game is game is ended, which will display GAME OVER Scene 
+     * @param endGameScene Scene when game is game is ended, which will display GAME OVER Scene
      * @param GameRoot root for gameScene
-     * @param Endgame Root root for endgameScene
+     * @param EndGameRoot Root root for endgameScene
      * @param score argument which stores score earned by user
      */
-    
-    public void endGameShow(Scene startgameScene, Group root, Stage primaryStage,Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot, long score){
+
+    public void usernamecheck(Scene startgameScene, Group root, Stage primaryStage,Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot, long score){
         this.endGameRoot = EndGameRoot;
         //display GAME OVER text
         Text text = new Text("GAME OVER");
@@ -86,7 +85,7 @@ public class EndGame {
         quitButton.setFont(Font.font("Courier New", FontWeight.BOLD, 20));
         endGameRoot.getChildren().add(quitButton);
         quitButton.relocate(520,550);
-        
+
         //when the quit button is clicked, a window will pop out and ask for confirmation
         quitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -95,7 +94,7 @@ public class EndGame {
                 alert.setTitle("Quit Dialog");
                 alert.setHeaderText("Quit from this page");
                 alert.setContentText("Are you sure?");
-                
+
                 //when "ok" is clickeed, it will terminate the program
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK){
