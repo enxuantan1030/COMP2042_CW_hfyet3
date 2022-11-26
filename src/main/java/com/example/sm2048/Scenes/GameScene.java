@@ -18,10 +18,21 @@ import javafx.stage.Stage;
 import java.util.Optional;
 import java.util.Random;
 
+    /**
+    *
+    * This class is used for displaying Game Scene, feature including:
+    * display total score, 2048 mechanical, able to return to menu and quit game
+    *
+    */
 public class GameScene {
 
     private static GameScene singleInstance = null;
 
+    /**
+    *
+    * This method is used to
+    *
+    */
     public static GameScene getInstance(){
         if(singleInstance == null)
             singleInstance= new GameScene();
@@ -42,6 +53,12 @@ public class GameScene {
         LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     }
 
+     /**
+    *
+    * This method is used to 
+    *
+    *
+    */
     public static double getLENGTH() {
         return LENGTH;
     }
@@ -277,6 +294,18 @@ public class GameScene {
 
     }
 
+    /**
+     *
+     * This method is used to create the Game Scene
+     *
+     * @param startgameScene Scene to create Menu Scene
+     * @param startroot root for startGameScene
+     * @param primaryStage Stage which display the Scenes
+     * @param gameScene Scene for playing the game 2048
+     * @param endGameScene Scene when game is game is ended, which will display GAME OVER Scene
+     * @param GameRoot root for gameScene
+     * @param endGameRoot Root root for endgameScene
+     */
     public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
 
         this.GameRoot = GameRoot;
