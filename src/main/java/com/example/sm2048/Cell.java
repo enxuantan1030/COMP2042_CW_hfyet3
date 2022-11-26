@@ -17,9 +17,20 @@ public class Cell {
     private Text textClass;
     private boolean modify = false;
 
+    /**
+    *
+    * This method is used to modify the variable modify
+    *
+    */
     public void setModify(boolean modify) {
         this.modify = modify;
     }
+    
+    /**
+    *
+    * This method is used to access the modifies made to the number "boxes"
+    *
+    */
 
     public boolean getModify() {
         return modify;
@@ -27,7 +38,7 @@ public class Cell {
 
     /**
     *
-    * This method is used for
+    * This method is used for initializing the size, colour and text of the number "boxes"
     *
     *@param x it is used to set the value of x in this method
     *@param y used to set the value of y 
@@ -47,6 +58,11 @@ public class Cell {
         root.getChildren().add(rectangle);
     }
 
+    /**
+    *
+    * This method is used to modify the number inside the number boxes
+    *
+    */
     public void setTextClass(Text textClass) {
         this.textClass = textClass;
     }
