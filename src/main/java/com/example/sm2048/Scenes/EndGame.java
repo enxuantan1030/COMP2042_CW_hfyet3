@@ -15,11 +15,22 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
+    /**
+    *
+    * This class is used for displaying End Game Scene, feature including:
+    * display total score, restart game and quit game
+    *
+    */
 
 public class EndGame {
     private static EndGame singleInstance = null;
     private Group endGameRoot;
 
+    /**
+    *
+    * This method is used to
+    *
+    */
     public static EndGame getInstance(){
         if(singleInstance == null)
             singleInstance= new EndGame();
