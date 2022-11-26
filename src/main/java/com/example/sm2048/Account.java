@@ -2,9 +2,15 @@ package com.example.sm2048;
 
 import java.util.ArrayList;
 
+/**
+*I
+*/
 public class Account implements Comparable<Account> {
     private long score = 0;
     private String userName ;
+    /**
+    *Creates a ArrayList to store accounts
+    */
     private static ArrayList<Account> accounts = new ArrayList<>();
 
     public Account(String userName){
@@ -15,7 +21,12 @@ public class Account implements Comparable<Account> {
     public int compareTo(Account o) {
         return Long.compare(o.getScore(), score);
     }
-
+/**
+*
+*This method is used for modify score by adding
+*
+*@param score this, is used to access the private score in this class
+*/
     public void addToScore(long score) {
         this.score += score;
     }
