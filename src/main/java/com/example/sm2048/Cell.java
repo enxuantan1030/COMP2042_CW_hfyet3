@@ -6,6 +6,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+/**
+*
+*This class is used for creating, modifying text and colours of the numbers "boxes" in the game, 
+*
+*/
 public class Cell {
     private Rectangle rectangle;
     private Group root;
@@ -20,6 +25,16 @@ public class Cell {
         return modify;
     }
 
+    /**
+    *
+    * This method is used for
+    *
+    *@param x it is used to set the value of x in this method
+    *@param y used to set the value of y 
+    *@param scale set the size of the number "boxes"
+    *@param root root of the scenes
+    *
+    */
     public Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
         rectangle.setX(x);
@@ -36,6 +51,13 @@ public class Cell {
         this.textClass = textClass;
     }
 
+     /**
+    *
+    * This method is used for merging 2 number "boxes", and one of the merged "boxed" will be deleted
+    *
+    *@param cell
+    *
+    */
     public void changeCell(Cell cell) {
         TextMaker.changeTwoText(textClass, cell.getTextClass());
         root.getChildren().remove(cell.getTextClass());
@@ -50,7 +72,14 @@ public class Cell {
         setColorByNumber(getNumber());
         cell.setColorByNumber(cell.getNumber());
     }
-
+    
+    /**
+    *
+    * This method is used for generating new number "boxes" in the game
+    *
+    *@param cell
+    *
+    */
     public void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");
         textClass.setText("0");
