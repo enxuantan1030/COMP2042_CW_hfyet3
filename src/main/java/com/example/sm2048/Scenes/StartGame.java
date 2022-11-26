@@ -38,9 +38,9 @@ public class StartGame{
      * @param root root for startGameScene
      * @param primaryStage Stage which display the Scenes
      * @param gameScene Scene for playing the game 2048
-     * @param endgameScene Scene when game is game is ended, which will display GAME OVER Scene 
+     * @param endGameScene Scene when game is game is ended, which will display GAME OVER Scene 
      * @param GameRoot root for gameScene
-     * @param Endgame Root root for endgameScene
+     * @param EndgameRoot root for endgameScene
      */
 
         public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
