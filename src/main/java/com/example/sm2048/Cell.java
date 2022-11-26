@@ -88,6 +88,13 @@ public class Cell {
         setColorByNumber(getNumber());
     }
 
+    /**
+    *
+    * This method is used for changing the colours of number "boxes" in the game
+    *
+    *@param numbers the colour of number boxes is determined by the value inside the boxes
+    *
+    */
     public void setColorByNumber(int number) {
         switch (number) {
             case 0:
@@ -130,19 +137,41 @@ public class Cell {
         }
 
     }
-
+    
+    /**
+    *
+    * This method is used to access the value of X in the rectangle
+    *
+    */
     public double getX() {
         return rectangle.getX();
     }
 
+    /**
+    *
+    * This method is used to access the value of Y in the rectangle
+    *
+    */
     public double getY() {
         return rectangle.getY();
     }
 
+    
+    /**
+    *
+    * This method is used to access the number inside the number boxes
+    * parseInt is used to accept the string ,radix parameter and convert it into an integer
+    *
+    */
     public int getNumber() {
         return Integer.parseInt(textClass.getText());
     }
 
+    /**
+    *
+    * This method is used to access the text inside the number boxes
+    *
+    */
     private Text getTextClass() {
         return textClass;
     }
