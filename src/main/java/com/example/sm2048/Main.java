@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 
 import java.util.Scanner;
 
+     /**
+     *
+     * This class is used to launch the program and triggers the program to open a window for the game
+     *
+     */
 public class Main extends Application {
     static final int WIDTH = 1000;
     static final int HEIGHT = 800;
@@ -21,10 +26,20 @@ public class Main extends Application {
     private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
     private static Scanner input= new Scanner(System.in);
 
+    /**
+     *
+     * This method is used to modify the Scene
+     *
+     */
     public void setGameScene(Scene gameScene) {
         this.gameScene = gameScene;
     }
 
+    /**
+     *
+     * This method is used to modify the root of the scene
+     *
+     */
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
     }
@@ -78,6 +93,11 @@ public class Main extends Application {
 
     }
 
+    /**
+     *
+     * This method is used to large the program
+     *
+     */
     public static void main(String[] args) {
         launch(args);
     }
