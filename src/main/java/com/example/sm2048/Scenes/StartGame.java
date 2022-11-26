@@ -19,11 +19,22 @@ import java.util.Optional;
 
 import static javafx.application.Application.launch;
 
+     /**
+     *
+     * This class is used for displaying Menu Scene, feature including:
+     * display game title, able to start game and quit game, choose theme and difficulty
+     *
+     */
 public class StartGame{
 
         private static StartGame singleInstance = null;
         private Group root;
 
+        /**
+        *
+        * This class is used for displaying Menu Scene, feature including:
+        *
+        */
         public static StartGame getInstance(){
             if(singleInstance == null)
                 singleInstance= new StartGame();
@@ -40,7 +51,7 @@ public class StartGame{
      * @param gameScene Scene for playing the game 2048
      * @param endGameScene Scene when game is game is ended, which will display GAME OVER Scene 
      * @param GameRoot root for gameScene
-     * @param EndgameRoot root for endgameScene
+     * @param EndGameRoot root for endgameScene
      */
 
         public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
