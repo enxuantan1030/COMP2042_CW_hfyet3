@@ -1,3 +1,7 @@
+/**
+*declares the dependencies within the module system and allows the compiler and the runtime 
+*to police the boundaries/access violations between the modules in the application.
+*/
 module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
