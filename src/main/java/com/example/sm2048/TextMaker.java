@@ -6,19 +6,39 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+*
+* This class is used for generating text
+*
+*/
 public class TextMaker {
     private static TextMaker singleInstance = null;
 
     private TextMaker() {
 
     }
-
+    
+    /**
+    *
+    * This class is used for generating text
+    *
+    */
     public static TextMaker getSingleInstance() {
         if (singleInstance == null)
             singleInstance = new TextMaker();
         return singleInstance;
     }
 
+    /**
+    *
+    * This class is used for generating text
+    *
+    * @param input
+    * @param xCell
+    * @param yCell
+    * @param root
+    *
+    */
     public Text madeText(String input, double xCell, double yCell, Group root) {
         double length = GameScene.getLENGTH();
         double fontSize = (3 * length) / 7.0;
