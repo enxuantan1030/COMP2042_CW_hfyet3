@@ -19,8 +19,8 @@ public class Cell {
 
     /**
     *
-    * This method is used to modify the variable modify
-    *
+    * This method is used to modify the variable modif
+     * @param modify
     */
     public void setModify(boolean modify) {
         this.modify = modify;
@@ -29,7 +29,8 @@ public class Cell {
     /**
     *
     * This method is used to access the modifies made to the number "boxes"
-    *
+    * @return
+     *
     */
 
     public boolean getModify() {
@@ -61,7 +62,7 @@ public class Cell {
     /**
     *
     * This method is used to modify the number inside the number boxes
-    *
+    * @param textClass
     */
     public void setTextClass(Text textClass) {
         this.textClass = textClass;
@@ -108,7 +109,7 @@ public class Cell {
     *
     * This method is used for changing the colours of number "boxes" in the game
     *
-    *@param numbers the colour of number boxes is determined by the value inside the boxes
+    *@param number the colour of number boxes is determined by the value inside the boxes
     *
     */
     public void setColorByNumber(int number) {
@@ -157,7 +158,7 @@ public class Cell {
     /**
     *
     * This method is used to access the value of X in the rectangle
-    *
+    * @return
     */
     public double getX() {
         return rectangle.getX();
@@ -166,7 +167,7 @@ public class Cell {
     /**
     *
     * This method is used to access the value of Y in the rectangle
-    *
+    * @return
     */
     public double getY() {
         return rectangle.getY();
@@ -177,7 +178,7 @@ public class Cell {
     *
     * This method is used to access the number inside the number boxes
     * parseInt is used to accept the string ,radix parameter and convert it into an integer
-    *
+    * @return
     */
     public int getNumber() {
         return Integer.parseInt(textClass.getText());

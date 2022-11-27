@@ -1,5 +1,6 @@
 package com.example.sm2048.Scenes;
 
+import com.example.sm2048.Account;
 import com.example.sm2048.Cell;
 import com.example.sm2048.TextMaker;
 import javafx.application.Platform;
@@ -18,12 +19,14 @@ import javafx.stage.Stage;
 import java.util.Optional;
 import java.util.Random;
 
+
     /**
     *
     * This class is used for displaying Game Scene, feature including:
     * display total score, 2048 mechanical, able to return to menu and quit game
     *
     */
+
 public class GameScene {
 
     private static GameScene singleInstance = null;
@@ -56,7 +59,7 @@ public class GameScene {
      /**
     *
     * This method is used to 
-    *
+    * @return
     *
     */
     public static double getLENGTH() {
@@ -378,8 +381,10 @@ public class GameScene {
                     if (gameresult.get() == ButtonType.OK){
                         primaryStage.setScene(startgameScene);
                         //link back to menu
+
                         StartGame.getInstance().game(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot);
-                        endGameRoot.getChildren().clear();
+                        GameRoot.getChildren().clear();
+
                     }
                 }
 

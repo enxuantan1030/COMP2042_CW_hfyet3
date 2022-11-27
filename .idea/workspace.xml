@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fe3030-0101-44cf-a639-83409af24213" name="Changes" comment="Added change theme function, restart button when game over">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Interfaces/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/EndGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/GameScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/Username.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Main.class" afterDir="false" />
@@ -21,8 +20,6 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/GameScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/Username$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/Username.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

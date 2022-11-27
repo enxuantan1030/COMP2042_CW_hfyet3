@@ -29,7 +29,7 @@ public class EndGame {
     /**
     *
     * This method is used to
-    *
+    * @return
     */
     public static EndGame getInstance(){
         if(singleInstance == null)

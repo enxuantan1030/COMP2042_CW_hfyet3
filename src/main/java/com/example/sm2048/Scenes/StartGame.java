@@ -1,11 +1,10 @@
 package com.example.sm2048.Scenes;
 
+import com.example.sm2048.Account;
+import com.example.sm2048.Interfaces.Menu;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -15,9 +14,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
+
 import static javafx.application.Application.launch;
+
 
      /**
      *
@@ -29,6 +31,7 @@ public class StartGame{
 
         private static StartGame singleInstance = null;
         private Group root;
+        int lvln = 0;
 
         /**
         *
@@ -39,6 +42,27 @@ public class StartGame{
             if(singleInstance == null)
                 singleInstance= new StartGame();
             return singleInstance;
+        }
+
+    /**
+     *
+     * This method is used to return the value of n value
+     *
+     * @param level
+     * @return value is passed back to the method to create the level desired by the users
+     */
+    public int lvl(String level){
+            if (level == "3 x 3") {
+                return 3;
+            } else if (level == "5 x 5") {
+                return 5;
+            } else if (level == "6 x 6") {
+                return 6;
+            } else if (level == "7 x 7") {
+                return 7;
+            } else {
+                return 4;
+            }
         }
 
     /**
@@ -123,19 +147,10 @@ public class StartGame{
                 /*game scene background colour is based on user selection
                   so if user choose blue, the background colour for gamescene and endgameScene will be blue*/
                 if (themedropbox.getValue() == "Blue"){
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
 
-                        //Gradient colour function referred to website -  
+                    //Gradient colour function referred to website -
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -149,17 +164,9 @@ public class StartGame{
                 }
                 //Option Yellow
                 else if (themedropbox.getValue() == "Yellow"){
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
+
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -173,17 +180,9 @@ public class StartGame{
                 }
                 //Option Green
                 else if (themedropbox.getValue() == "Green"){
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
+
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -197,17 +196,9 @@ public class StartGame{
                 }
                 //Option Pink
                 else if (themedropbox.getValue() == "Pink"){
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
+
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -221,17 +212,9 @@ public class StartGame{
                 }
                 //Option Purple
                 else if (themedropbox.getValue() == "Purple"){
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
+
                     gameScene.setFill(new LinearGradient(
                             0, 0, 1, 1, true,
                             CycleMethod.NO_CYCLE,
@@ -245,17 +228,8 @@ public class StartGame{
                 }
                 //Default Colour set to Black
                 else{
-                    if (leveldropbox.getValue() == "3 x 3") {
-                        GameScene.setN(3);
-                    } else if (leveldropbox.getValue() == "5 x 5") {
-                        GameScene.setN(5);
-                    } else if (leveldropbox.getValue() == "6 x 6") {
-                        GameScene.setN(6);
-                    } else if (leveldropbox.getValue() == "7 x 7") {
-                        GameScene.setN(7);
-                    } else {
-                        GameScene.setN(4);
-                    }
+                    lvln = lvl((String)leveldropbox.getValue());
+                    GameScene.setN(lvln);
 
                     gameScene.setFill(new LinearGradient(
 
@@ -271,6 +245,7 @@ public class StartGame{
                 }
                 //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
+
                 //links the Scene to GameScene.play method
                 GameScene.getInstance().play(startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
                 root.getChildren().clear();
@@ -301,7 +276,20 @@ public class StartGame{
                     System.exit(1);
                 }
             });
-            
-        }
 
+            //Display "ENTER YOUR NAME"
+            Text reqname = new Text("ENTER YOUR NAME");
+            reqname.relocate(377,620);
+            reqname.setFont(Font.font("Courier New", 27));
+            reqname.setFill(Color.web("#E5E7E9"));
+            root.getChildren().add(reqname);
+
+            //username
+            TextField name= new TextField();
+            name.setPrefSize(200,40);
+            root.getChildren().add(name);
+            name.relocate(400, 650);
+
+
+        }
 }

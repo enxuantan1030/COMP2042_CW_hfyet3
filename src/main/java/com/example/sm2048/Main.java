@@ -29,7 +29,7 @@ public class Main extends Application {
     /**
      *
      * This method is used to modify the Scene
-     *
+     * @param gameScene
      */
     public void setGameScene(Scene gameScene) {
         this.gameScene = gameScene;
@@ -38,7 +38,7 @@ public class Main extends Application {
     /**
      *
      * This method is used to modify the root of the scene
-     *
+     * @param gameRoot
      */
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
