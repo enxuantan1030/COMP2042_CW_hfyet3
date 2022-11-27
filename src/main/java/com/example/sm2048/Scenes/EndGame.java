@@ -62,7 +62,7 @@ public class EndGame {
 
         //display Score earned by user
         Text scoreText = new Text(score+"");
-        scoreText.relocate(450,400);
+        scoreText.relocate(450,480);
         scoreText.setFont(Font.font("Courier New", 50));
         scoreText.setFill(Color.web("#E5E7E9"));
         endGameRoot.getChildren().add(scoreText);
@@ -85,9 +85,11 @@ public class EndGame {
             Optional<ButtonType> gameresult = gamealert.showAndWait();
             if (gameresult.get() == ButtonType.OK){
                 primaryStage.setScene(startgameScene);
+
                 //link back to menu
                 StartGame.getInstance().game(startgameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
                 endGameRoot.getChildren().clear();
+
             }
         });
 

@@ -86,6 +86,7 @@ public class Main extends Application {
                 new Stop(1, Color.web("#85929E"))));
         setGameScene(startGameScene);
         primaryStage.setScene(startGameScene);
+        primaryStage.setTitle("hfyet3_2048");
         StartGame game = new StartGame();
         game.game(startGameScene, startgameRoot, primaryStage, gameScene, endGameScene, gameRoot, endgameRoot);
 
