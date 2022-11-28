@@ -5,21 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fe3030-0101-44cf-a639-83409af24213" name="Changes" comment="Added change theme function, restart button when game over">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGameAbstractMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGameInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/ArrowKeysControls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GameMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GameScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/InGameAbstractMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/InGameInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/MenuAbstractMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/MenuInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/StartGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/ScenesAbstract/Scenesimple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/ScenesAbstract/Scenesimplified.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/EndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Others/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Others/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Interfaces/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Others/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Others/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/GameScene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sm2048/TextMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Others/TextMaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/GameScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/StartGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Cell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Interfaces/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Others/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/EndGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/GameScene.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/Scenes/StartGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/sm2048/TextMaker.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +49,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,7 +66,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/sm2048/Scenes/StartGame.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/StartGame.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,8 +99,11 @@
       <recent name="com.example.sm2048" />
       <recent name="com.example.demo" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sm2048.Scenes.EndGame" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.sm2048.Main" />
       <module name="20297487_SM" />
@@ -96,12 +117,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sm2048.Main" />
+      <module name="20297487_SM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sm2048.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.sm2048.Scenes.Main" />
       <module name="20297487_SM" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.sm2048.Scenes.GameScene" />
+          <option name="PATTERN" value="com.example.sm2048.Scenes.InGame.GameScene" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.sm2048.Main" />
+      <module name="20297487_SM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.sm2048.Others.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,7 +174,7 @@
       <module name="20297487_SM" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.sm2048.Interfaces.*" />
+          <option name="PATTERN" value="com.example.sm2048.Abstract.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,6 +197,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Menu" />
       </list>
