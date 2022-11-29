@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -50,13 +51,17 @@ public class EndGame extends EndGameAbstractMethods {
      * @param score argument which stores score earned by user
      */
     
-    public void endGameShow(Scene startgameScene, Group root, Stage primaryStage,Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot, long score){
+    public void endGameShow(Scene startgameScene, Group root, Stage primaryStage,Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot, long score, Text time){
         this.endGameRoot = EndGameRoot;
         //display GAME OVER text
         GameOver(endGameRoot);
 
         //display Score earned by user
         Score(endGameRoot, score);
+
+        //display Time used
+        Timeused(endGameRoot);
+        Time(endGameRoot, time);
 
         //Restart button
         Button backmenuButton = new Button("RESTART");

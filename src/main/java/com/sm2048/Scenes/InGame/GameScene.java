@@ -3,7 +3,11 @@ package com.sm2048.Scenes.InGame;
 import com.sm2048.Others.Cell;
 import com.sm2048.Scenes.EndGame.EndGame;
 import com.sm2048.Scenes.MenuGame.StartGame;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.Optional;
 
@@ -27,10 +32,25 @@ import java.util.Optional;
 
 public class GameScene extends ArrowKeysControls {
 
+    void change(Text text) {
+        if(millis == 1000) {
+            secs++;
+            millis = 0;
+        }
+        if(secs == 60) {
+            mins++;
+            secs = 0;
+        }
+        text.setText((((mins/10) == 0) ? "0" : "") + mins + ":"
+                + (((secs/10) == 0) ? "0" : "") + secs + ":"
+                + (((millis/10) == 0) ? "00" : (((millis/100) == 0) ? "0" : "")) + millis++);
+    }
+
     private static GameScene singleInstance = null;
 
     //prevents the instantiation from any other class.
     public GameScene(){}
+
     /**
     *
     * This method is used to
@@ -55,8 +75,29 @@ public class GameScene extends ArrowKeysControls {
      * @param endGameRoot Root root for endgameScene
      */
     public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
-
+        this.mins = 0 ;
+        this.secs = 0;
+        this.millis = 0;
         this.GameRoot = GameRoot;
+
+        Text timeused = new Text();
+        timeused.setText("TIME USED :");
+        textstyle(timeused, GameRoot, 30);
+        timeused.relocate(750, 200);
+
+        time = new Text("00:00:000");
+        timeline = new Timeline(new KeyFrame(Duration.millis(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                change(time);
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(false);
+        timeline.play();
+        time.relocate(750, 250);
+        textstyle(time, GameRoot, 30);
+
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -69,13 +110,11 @@ public class GameScene extends ArrowKeysControls {
         Text score = new Text();
         score.setText("SCORE :");
         textstyle(score, GameRoot, 30);
-        score.setStroke(Color.BLACK);
         score.relocate(750, 100);
 
         Text scoreText = new Text();
         scoreText.relocate(750, 150);
         textstyle(scoreText, GameRoot, 30);
-        scoreText.setStroke(Color.BLACK);
         scoreText.setText("0");
 
         Text intruct = new Text();
@@ -122,9 +161,12 @@ public class GameScene extends ArrowKeysControls {
             haveEmptyCell = GameScene.this.haveEmptyCell();
             if (haveEmptyCell == -1) {
                 if (GameScene.this.canNotMove()) {
+                    //pause timer
+                    timeline.pause();
+
                     primaryStage.setScene(endGameScene);
 
-                    EndGame.getInstance().endGameShow(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score);
+                    EndGame.getInstance().endGameShow(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
                     GameRoot.getChildren().clear();
                     this.score = 0;
                 }

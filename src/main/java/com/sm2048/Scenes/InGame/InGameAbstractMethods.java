@@ -1,12 +1,24 @@
 package com.sm2048.Scenes.InGame;
 
+import com.sm2048.Others.TextMaker;
 import com.sm2048.ScenesAbstract.Scenesimple;
 import com.sm2048.Others.Cell;
+import javafx.animation.Timeline;
+import javafx.scene.text.Text;
 
-import static com.sm2048.Scenes.InGame.GameMovement.*;
 
 public abstract class InGameAbstractMethods extends Scenesimple implements InGameInterface {
+
+    TextMaker textMaker = TextMaker.getSingleInstance();
     Cell[][] cells = new Cell[n][n];
+    static int HEIGHT = 700;
+    static int n = 4;
+    final static int distanceBetweenCells = 10;
+    static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    long score = 0;
+    Text time;
+    Timeline timeline;
+    int mins = 0, secs = 0, millis = 0;
 
     public static double getLENGTH() {
         return LENGTH;

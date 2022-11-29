@@ -13,7 +13,7 @@ public abstract class EndGameAbstractMethods extends Scenesimple implements EndG
 
     public void GameOver(Group root) {
         Text text = new Text("GAME OVER");
-        text.relocate(250,250);
+        text.relocate(230,250);
         textstyle(text, root, 100);
     }
 
@@ -28,9 +28,20 @@ public abstract class EndGameAbstractMethods extends Scenesimple implements EndG
     }
 
     public void Score(Group root, long score){
-        Text scoreText = new Text(score+"");
-        scoreText.relocate(450,480);
-        textstyle(scoreText, root, 50);
+        Text scoreText = new Text("SCORE:"+score+"");
+        scoreText.relocate(400,350);
+        textstyle(scoreText, root, 35);
+    }
+
+    public void Timeused(Group root){
+        Text scoreText = new Text("TIME USED:");
+        scoreText.relocate(400,400);
+        textstyle(scoreText, root, 35);
+    }
+
+    public void Time(Group root, Text time){
+        time.relocate(400,430);
+        textstyle(time, root, 32);
     }
 
 }

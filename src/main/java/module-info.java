@@ -5,6 +5,7 @@
 module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
     exports com.sm2048;
     opens com.sm2048 to javafx.fxml;

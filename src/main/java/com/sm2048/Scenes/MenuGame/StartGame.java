@@ -102,6 +102,7 @@ public class StartGame extends MenuAbstractMethods{
             startButton.relocate(260,400);
             //when start button is clicked, it will be directed to the game scene
             startButton.setOnAction(actionEvent ->  {
+
                 /*game scene background colour is based on user selection
                   so if user choose blue, the background colour for gamescene and endgameScene will be blue*/
                 if (themedropbox.getValue() == "Blue"){

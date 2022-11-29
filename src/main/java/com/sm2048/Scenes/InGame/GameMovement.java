@@ -9,12 +9,9 @@ import java.util.Random;
 
 public abstract class GameMovement extends InGameAbstractMethods {
 
-    TextMaker textMaker = TextMaker.getSingleInstance();
-    static int HEIGHT = 700;
-    static int n = 4;
-    final static int distanceBetweenCells = 10;
-    static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
-    long score = 0;
+
+
+
     Group GameRoot;
 
      void randomFillNumber(int turn) {
