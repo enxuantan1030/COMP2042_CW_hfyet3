@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="Maven: tv.danmaku.ijk.media:ijkplayer-armv7a:0.4.4.1">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/tv/danmaku/ijk/media/ijkplayer-armv7a/0.4.4.1/ijkplayer-armv7a-0.4.4.1.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/tv/danmaku/ijk/media/ijkplayer-armv7a/0.4.4.1/ijkplayer-armv7a-0.4.4.1-javadoc.jar!/" />
     </JAVADOC>

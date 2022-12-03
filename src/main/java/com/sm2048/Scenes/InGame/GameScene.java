@@ -1,8 +1,6 @@
 package com.sm2048.Scenes.InGame;
 
-import com.sm2048.Others.Cell;
 import com.sm2048.Scenes.EndGame.EndGame;
-import com.sm2048.Scenes.MenuGame.StartGame;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -21,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileNotFoundException;
 import java.util.Optional;
 
 /**
@@ -31,20 +30,6 @@ import java.util.Optional;
     */
 
 public class GameScene extends ArrowKeysControls {
-
-    void change(Text text) {
-        if(millis == 1000) {
-            secs++;
-            millis = 0;
-        }
-        if(secs == 60) {
-            mins++;
-            secs = 0;
-        }
-        text.setText((((mins/10) == 0) ? "0" : "") + mins + ":"
-                + (((secs/10) == 0) ? "0" : "") + secs + ":"
-                + (((millis/10) == 0) ? "00" : (((millis/100) == 0) ? "0" : "")) + millis++);
-    }
 
     private static GameScene singleInstance = null;
 
@@ -75,11 +60,12 @@ public class GameScene extends ArrowKeysControls {
      * @param endGameRoot Root root for endgameScene
      */
     public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
-        this.mins = 0 ;
+        this.GameRoot = GameRoot;
+        //resets stopwatch to 0
+        this.mins = 0;
         this.secs = 0;
         this.millis = 0;
-        this.GameRoot = GameRoot;
-
+        
         Text timeused = new Text();
         timeused.setText("TIME USED :");
         textstyle(timeused, GameRoot, 30);
@@ -95,9 +81,8 @@ public class GameScene extends ArrowKeysControls {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(false);
         timeline.play();
-        time.relocate(750, 250);
         textstyle(time, GameRoot, 30);
-
+        time.relocate(750, 250);
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -106,7 +91,7 @@ public class GameScene extends ArrowKeysControls {
             }
 
         }
-
+        
         Text score = new Text();
         score.setText("SCORE :");
         textstyle(score, GameRoot, 30);
@@ -140,6 +125,7 @@ public class GameScene extends ArrowKeysControls {
             } else if (key.getCode() == KeyCode.ESCAPE) {
                 quitbtn(GameRoot);
             } else if (key.getCode() == KeyCode.M) {
+
                 Alert gamealert = new Alert(Alert.AlertType.CONFIRMATION);
                 gamealert.setTitle("Dialog Menu");
                 gamealert.setHeaderText("Back to Menu");
@@ -148,11 +134,10 @@ public class GameScene extends ArrowKeysControls {
                 //when "ok" is clicked, it will return user to menu page
                 Optional<ButtonType> gameresult = gamealert.showAndWait();
                 if (gameresult.get() == ButtonType.OK){
-                    primaryStage.setScene(startgameScene);
-                    //link back to menu
-
-                    StartGame.getInstance().game(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot);
-                    GameRoot.getChildren().clear();
+                    n = 7;
+                    LENGTH = 0;
+                    timeline.stop();
+                    main.restart(primaryStage);
 
                 }
             }
@@ -162,13 +147,12 @@ public class GameScene extends ArrowKeysControls {
             if (haveEmptyCell == -1) {
                 if (GameScene.this.canNotMove()) {
                     //pause timer
-                    timeline.pause();
-
+                    timeline.stop();
                     primaryStage.setScene(endGameScene);
 
                     EndGame.getInstance().endGameShow(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
                     GameRoot.getChildren().clear();
-                    this.score = 0;
+
                 }
             } else if(haveEmptyCell == 1 && key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.UP || key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.RIGHT)
                 GameScene.this.randomFillNumber(2);

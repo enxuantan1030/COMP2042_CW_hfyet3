@@ -1,6 +1,7 @@
 package com.sm2048.Scenes.EndGame;
 
-import com.sm2048.Scenes.MenuGame.StartGame;
+import com.sm2048.Main;
+import com.sm2048.Scenes.EndGame.Features.DisplayScore;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ import java.util.Optional;
     *
     */
 
-public class EndGame extends EndGameAbstractMethods {
+public class EndGame extends DisplayScore {
     private Group endGameRoot;
 
     //static member holds only one instance of the Endgame class
@@ -53,6 +54,7 @@ public class EndGame extends EndGameAbstractMethods {
     
     public void endGameShow(Scene startgameScene, Group root, Stage primaryStage,Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot, long score, Text time){
         this.endGameRoot = EndGameRoot;
+        Main main = new Main();
         //display GAME OVER text
         GameOver(endGameRoot);
 
@@ -77,11 +79,14 @@ public class EndGame extends EndGameAbstractMethods {
             //when "ok" is clicked, it will return user to menu page
             Optional<ButtonType> gameresult = gamealert.showAndWait();
             if (gameresult.get() == ButtonType.OK){
-                primaryStage.setScene(startgameScene);
+
+                main.restart(primaryStage);
+
+                /*primaryStage.setScene(startgameScene);
 
                 //link back to menu
                 StartGame.getInstance().game(startgameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
-                endGameRoot.getChildren().clear();
+                endGameRoot.getChildren().clear();*/
 
             }
         });

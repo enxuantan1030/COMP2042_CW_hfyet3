@@ -1,7 +1,6 @@
 package com.sm2048.Scenes.EndGame;
 
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.text.Text;
 
 public interface EndGameInterface {

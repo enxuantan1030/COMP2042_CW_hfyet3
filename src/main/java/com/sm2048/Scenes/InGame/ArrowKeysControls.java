@@ -1,6 +1,6 @@
 package com.sm2048.Scenes.InGame;
 
-public abstract class ArrowKeysControls extends GameMovement {
+public class ArrowKeysControls extends Stopwatch {
 
     public void moveLeft() {
         for (int i = 0; i < n; i++) {

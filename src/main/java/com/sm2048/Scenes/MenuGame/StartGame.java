@@ -1,14 +1,23 @@
 package com.sm2048.Scenes.MenuGame;
 
-import com.sm2048.Others.Account;
+import com.sm2048.Accounts.Test;
+import com.sm2048.Main;
+import com.sm2048.Accounts.Account;
 import com.sm2048.Scenes.InGame.GameScene;
+import com.sm2048.Scenes.InGame.Variables;
+import com.sm2048.Scenes.MenuGame.Features.Theme;
+import javafx.css.PseudoClass;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import static com.sm2048.Others.Account.accounts;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Objects;
+
+import static com.sm2048.Accounts.Account.accounts;
 import static javafx.application.Application.launch;
 
 
@@ -18,11 +27,11 @@ import static javafx.application.Application.launch;
      * display game title, able to start game and quit game, choose theme and difficulty
      *
      */
-public class StartGame extends MenuAbstractMethods{
+public class StartGame extends Theme {
 
         private static StartGame singleInstance = null;
         private Group root;
-        int lvln = 0;
+        static int lvln = 7;
         String c1, c2;
 
         /**
@@ -36,8 +45,7 @@ public class StartGame extends MenuAbstractMethods{
             return singleInstance;
         }
 
-
-    /**
+         /**
      *
      * This method is used to create the Menu Scene
      *
@@ -50,8 +58,31 @@ public class StartGame extends MenuAbstractMethods{
      * @param EndGameRoot root for endgameScene
      */
         public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
-
             this.root = root;
+
+            Main.imageView1.relocate(610,230);
+            Main.imageView1.setFitHeight(120);
+            Main.imageView1.setFitWidth(100);
+            Main.imageView1.setPreserveRatio(true);
+            root.getChildren().add(Main.imageView1);
+
+            /*Main.imageView2.relocate(700,600);
+            Main.imageView2.setFitHeight(120);
+            Main.imageView2.setFitWidth(140);
+            Main.imageView2.setPreserveRatio(true);
+            root.getChildren().add(Main.imageView2);
+
+            Main.imageView3.relocate(800,600);
+            Main.imageView3.setFitHeight(120);
+            Main.imageView3.setFitWidth(100);
+            Main.imageView3.setPreserveRatio(true);
+            root.getChildren().add(Main.imageView3);
+
+            Main.imageView4.relocate(900,600);
+            Main.imageView4.setFitHeight(120);
+            Main.imageView4.setFitWidth(100);
+            Main.imageView4.setPreserveRatio(true);
+            root.getChildren().add(Main.imageView4);*/
 
             GameScene game = new GameScene();
             //game title
@@ -65,17 +96,17 @@ public class StartGame extends MenuAbstractMethods{
             //Drop down menu for choosing theme colour in game
             final ComboBox<String> themedropbox = new ComboBox<>();
             themedropbox.getItems().addAll(
-                    "Default(Black)",
+                    "Default(Green)",
                     "Blue",
                     "Yellow",
-                    "Green",
+                    "Black",
                     "Pink",
                     "Purple"
             );
             root.getChildren().add(themedropbox);
             themedropbox.setPrefSize(200,60);
             themedropbox.relocate(520,530);
-            themedropbox.setValue("Default(Black)");
+            themedropbox.setValue("Default(Green)");
 
             //Display "Difficulty"
             Text level = new Text("Difficulty");
@@ -96,6 +127,18 @@ public class StartGame extends MenuAbstractMethods{
             leveldropbox.relocate(260,530);
             leveldropbox.setValue("Default(4 x 4)");
 
+            //Display "ENTER YOUR NAME"
+            Text reqname = new Text("ENTER YOUR NAME");
+            reqname.relocate(377,620);
+            textstyle(reqname, root, 27);
+
+            //username
+            TextField name= new TextField();
+            name.setPrefSize(200,40);
+            root.getChildren().add(name);
+            name.setPromptText("Please enter your name here");
+            name.relocate(400, 650);
+
             //Menu start button
             Button startButton = new Button("START");
             btnstyle(startButton, root);
@@ -103,39 +146,11 @@ public class StartGame extends MenuAbstractMethods{
             //when start button is clicked, it will be directed to the game scene
             startButton.setOnAction(actionEvent ->  {
 
-                /*game scene background colour is based on user selection
-                  so if user choose blue, the background colour for gamescene and endgameScene will be blue*/
-                if (themedropbox.getValue() == "Blue"){
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#1A5276", "#AED6F1",gameScene, endGameScene);
+                Test.add(name.getText());
 
-                }else if (themedropbox.getValue() == "Yellow"){
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#7D6608", "#FAD7A0", gameScene, endGameScene);
+                    Variables.setN(ChooseDifficulty(leveldropbox.getValue()));
+                    DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
 
-                }else if (themedropbox.getValue() == "Green"){
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#0B5345", "#A9DFBF", gameScene, endGameScene);
-
-                }else if (themedropbox.getValue() == "Pink"){
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#78281F", "#FADBD8", gameScene, endGameScene);
-
-                }else if (themedropbox.getValue() == "Purple"){
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#4A235A", "#D7BDE2", gameScene, endGameScene);
-
-                }else{
-                    lvln = ChooseDifficulty((String)leveldropbox.getValue());
-                    GameScene.setN(lvln);
-                    ChooseTheme("#1B2631", "#85929E", gameScene, endGameScene);
-
-                }
                 //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
 
@@ -148,17 +163,6 @@ public class StartGame extends MenuAbstractMethods{
             //Create Quit button
             Quitbutton(root);
 
-            //Display "ENTER YOUR NAME"
-            Text reqname = new Text("ENTER YOUR NAME");
-            reqname.relocate(377,620);
-            textstyle(reqname, root, 27);
-
-            //username
-            TextField name= new TextField();
-            name.setPrefSize(200,40);
-            root.getChildren().add(name);
-            name.relocate(400, 650);
-            accounts.add(new Account(name.getText()));
+        }
 
         }
-}

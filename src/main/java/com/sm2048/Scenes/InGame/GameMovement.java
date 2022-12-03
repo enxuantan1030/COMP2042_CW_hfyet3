@@ -1,18 +1,10 @@
 package com.sm2048.Scenes.InGame;
 
-import com.sm2048.Others.Cell;
-import com.sm2048.Others.TextMaker;
-import javafx.scene.Group;
 import javafx.scene.text.Text;
 
 import java.util.Random;
 
-public abstract class GameMovement extends InGameAbstractMethods {
-
-
-
-
-    Group GameRoot;
+public class GameMovement extends MovementEmptyCell {
 
      void randomFillNumber(int turn) {
 
