@@ -3,7 +3,6 @@ package com.sm2048;
 import java.io.File;
 import com.sm2048.Scenes.MenuGame.StartGame;
 import javafx.application.Application;
-import javafx.beans.binding.StringExpression;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -35,11 +34,29 @@ public class Main extends Application {
     public static ImageView imageView2;
     public static ImageView imageView3;
     public static ImageView imageView4;
-    public static String data_path;
-    public static File datafile;
+    public static String data_path3x3;
+    public static String data_path4x4;
+    public static String data_path5x5;
+    public static String data_path6x6;
+    public static String data_path7x7;
+    private static String leaderboard;
+    public static URL fxml;
+    public static URL score3x3;
+    public static URL score4x4;
+    public static URL score5x5;
+    public static URL score6x6;
+    public static URL score7x7;
     private Group gameRoot = new Group();
     private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
     private static Scanner input= new Scanner(System.in);
+
+    public static String getLeaderboard() {
+        return leaderboard;
+    }
+
+    public static void setLeaderboard(String leaderboard) {
+        Main.leaderboard = leaderboard;
+    }
 
     /**
      *
@@ -126,11 +143,32 @@ public class Main extends Application {
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
         mediaPlayer.play();
 
-        URL Data = getClass().getResource("Data.txt");
-        assert Data != null;
+        URL data3x3 = getClass().getResource("Account3x3.txt");
+        assert data3x3 != null;
+        data_path3x3 = Paths.get(data3x3.toURI()).toString();
 
-        data_path = Paths.get(Data.toURI()).toString();
-        datafile = new File(data_path);
+        URL data4x4 = getClass().getResource("Account4x4.txt");
+        assert data4x4 != null;
+        data_path4x4 = Paths.get(data4x4.toURI()).toString();
+
+        URL data5x5 = getClass().getResource("Account5x5.txt");
+        assert data5x5 != null;
+        data_path5x5 = Paths.get(data5x5.toURI()).toString();
+
+        URL data6x6 = getClass().getResource("Account6x6.txt");
+        assert data6x6 != null;
+        data_path6x6 = Paths.get(data6x6.toURI()).toString();
+
+        URL data7x7 = getClass().getResource("Account7x7.txt");
+        assert data7x7 != null;
+        data_path7x7 = Paths.get(data7x7.toURI()).toString();
+
+        fxml = getClass().getResource("leaderboard.fxml");
+        score3x3 = getClass().getResource("ShowScore3.fxml");
+        score4x4 = getClass().getResource("ShowScore4.fxml");
+        score5x5 = getClass().getResource("ShowScore5.fxml");
+        score6x6 = getClass().getResource("ShowScore6.fxml");
+        score7x7 = getClass().getResource("ShowScore7.fxml");
 
         startGame(primaryStage);
     }

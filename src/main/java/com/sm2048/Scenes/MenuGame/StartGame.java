@@ -1,23 +1,19 @@
 package com.sm2048.Scenes.MenuGame;
 
-import com.sm2048.Accounts.Test;
+import com.sm2048.Accounts.AddName;
 import com.sm2048.Main;
-import com.sm2048.Accounts.Account;
 import com.sm2048.Scenes.InGame.GameScene;
 import com.sm2048.Scenes.InGame.Variables;
 import com.sm2048.Scenes.MenuGame.Features.Theme;
-import javafx.css.PseudoClass;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.io.IOException;
+import java.util.Optional;
 
-import static com.sm2048.Accounts.Account.accounts;
 import static javafx.application.Application.launch;
 
 
@@ -29,6 +25,7 @@ import static javafx.application.Application.launch;
      */
 public class StartGame extends Theme {
 
+        public static int diff;
         private static StartGame singleInstance = null;
         private Group root;
         static int lvln = 7;
@@ -66,13 +63,13 @@ public class StartGame extends Theme {
             Main.imageView1.setPreserveRatio(true);
             root.getChildren().add(Main.imageView1);
 
-            /*Main.imageView2.relocate(700,600);
+            Main.imageView2.relocate(290,605);
             Main.imageView2.setFitHeight(120);
             Main.imageView2.setFitWidth(140);
             Main.imageView2.setPreserveRatio(true);
             root.getChildren().add(Main.imageView2);
 
-            Main.imageView3.relocate(800,600);
+            /*Main.imageView3.relocate(800,600);
             Main.imageView3.setFitHeight(120);
             Main.imageView3.setFitWidth(100);
             Main.imageView3.setPreserveRatio(true);
@@ -144,24 +141,46 @@ public class StartGame extends Theme {
             btnstyle(startButton, root);
             startButton.relocate(260,400);
             //when start button is clicked, it will be directed to the game scene
-            startButton.setOnAction(actionEvent ->  {
+            startButton.setOnAction(actionEvent -> {
+                String value = leveldropbox.getValue();
+                diff = ChooseDifficulty(value);
 
-                Test.add(name.getText());
+                if (name.getText().toString().matches("^[a-zA-Z]+$")|| name.getText() == null){
+                    try {
+                        AddName.add(name.getText(), diff);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                    Variables.setN(ChooseDifficulty(leveldropbox.getValue()));
+                    Variables.setN(diff);
                     DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
 
                 //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
 
                 //links the Scene to GameScene.play method
-                GameScene.getInstance().play(startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
+                GameScene.getInstance().play(name.getText(), startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
                 root.getChildren().clear();
 
+            }else{
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Name");
+                    alert.setHeaderText("Please enter your name only with characters[A-Z]");
+                    alert.setContentText("Re-enter your name");
+
+                    //when "ok" is clicked, it will terminate the program
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+
+                    }
+                }
             });
 
             //Create Quit button
             Quitbutton(root);
+
+            //Create leaderboard button
+            LBbutton(root);
 
         }
 

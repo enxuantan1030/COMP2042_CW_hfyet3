@@ -88,7 +88,12 @@ public class Cell {
         }
         setColorByNumber(getNumber());
         cell.setColorByNumber(cell.getNumber());
-    }
+        if (cell.getNumber() == 2048){
+            GameScene.win(cell.getNumber());
+        }
+
+        }
+
     
     /**
     *
@@ -103,6 +108,7 @@ public class Cell {
         root.getChildren().remove(textClass);
         cell.setColorByNumber(cell.getNumber());
         setColorByNumber(getNumber());
+
     }
 
     /**

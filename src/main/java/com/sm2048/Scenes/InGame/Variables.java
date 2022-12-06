@@ -12,7 +12,7 @@ public class Variables extends GeneralComponents {
     TextMaker textMaker = TextMaker.getSingleInstance();
     Cell[][] cells = new Cell[n][n];
     static int HEIGHT = 700;
-    static int n = 7;
+    public static int n = 8;
     final static int distanceBetweenCells = 10;
     static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     long score = 0;

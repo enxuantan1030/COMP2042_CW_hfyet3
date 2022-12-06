@@ -1,11 +1,11 @@
 package com.sm2048.Scenes.InGame;
 
+import com.sm2048.Accounts.UpdateScore;
 import com.sm2048.Scenes.EndGame.EndGame;
+import com.sm2048.Scenes.MenuGame.StartGame;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,7 +19,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.FileNotFoundException;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,8 @@ import java.util.Optional;
     */
 
 public class GameScene extends ArrowKeysControls {
-
+    private static int win;
+    boolean title;
     private static GameScene singleInstance = null;
 
     //prevents the instantiation from any other class.
@@ -47,10 +47,14 @@ public class GameScene extends ArrowKeysControls {
         return singleInstance;
     }
 
+    public static void win(int number){
+        win = number;
+    }
     /**
      *
      * This method is used to create the Game Scene
      *
+     * @param username
      * @param startgameScene Scene to create Menu Scene
      * @param startroot root for startGameScene
      * @param primaryStage Stage which display the Scenes
@@ -59,12 +63,13 @@ public class GameScene extends ArrowKeysControls {
      * @param GameRoot root for gameScene
      * @param endGameRoot Root root for endgameScene
      */
-    public void play(Scene startgameScene,Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
+    public void play(String username, Scene startgameScene, Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
         this.GameRoot = GameRoot;
         //resets stopwatch to 0
         this.mins = 0;
         this.secs = 0;
         this.millis = 0;
+        this.score = 0;
         
         Text timeused = new Text();
         timeused.setText("TIME USED :");
@@ -72,12 +77,7 @@ public class GameScene extends ArrowKeysControls {
         timeused.relocate(750, 200);
 
         time = new Text("00:00:000");
-        timeline = new Timeline(new KeyFrame(Duration.millis(1), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                change(time);
-            }
-        }));
+        timeline = new Timeline(new KeyFrame(Duration.millis(1), event -> change(time)));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(false);
         timeline.play();
@@ -85,7 +85,10 @@ public class GameScene extends ArrowKeysControls {
         time.relocate(750, 250);
 
         for (int i = 0; i < n; i++) {
+//            System.out.println(n);
             for (int j = 0; j < n; j++) {
+//                System.out.println("j "+j);
+//                System.out.println("second" + n);
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
                         (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, GameRoot);
             }
@@ -146,15 +149,24 @@ public class GameScene extends ArrowKeysControls {
             haveEmptyCell = GameScene.this.haveEmptyCell();
             if (haveEmptyCell == -1) {
                 if (GameScene.this.canNotMove()) {
-                    //pause timer
+                    UpdateScore.modifyScore(username, this.score, time, StartGame.diff);
+                    this.title = false;
                     timeline.stop();
                     primaryStage.setScene(endGameScene);
-
-                    EndGame.getInstance().endGameShow(startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
+                    EndGame.getInstance().endGameShow(this.title, startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
                     GameRoot.getChildren().clear();
 
                 }
-            } else if(haveEmptyCell == 1 && key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.UP || key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.RIGHT)
+
+            }else if(win == 2048){
+                UpdateScore.modifyScore(username, this.score, time, StartGame.diff);
+                this.title = true;
+                timeline.stop();
+                primaryStage.setScene(endGameScene);
+                EndGame.getInstance().endGameShow(this.title,startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
+                GameRoot.getChildren().clear();
+
+            }else if(haveEmptyCell == 1 && key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.UP || key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.RIGHT)
                 GameScene.this.randomFillNumber(2);
         }));
 
