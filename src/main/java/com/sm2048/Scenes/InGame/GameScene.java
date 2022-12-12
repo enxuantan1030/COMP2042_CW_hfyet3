@@ -1,7 +1,10 @@
 package com.sm2048.Scenes.InGame;
 
 import com.sm2048.Accounts.UpdateScore;
+import com.sm2048.Main;
 import com.sm2048.Scenes.EndGame.EndGame;
+import com.sm2048.Scenes.InGame.Features.ArrowKeysControls;
+import com.sm2048.Scenes.InGame.GenerateGameCells.Cell;
 import com.sm2048.Scenes.MenuGame.StartGame;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,26 +23,34 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
     *
     * This class is used for displaying Game Scene, feature including:
-    * display total score, 2048 mechanical, able to return to menu and quit game
+    * display total score, stopwatch, the game itself, able to return to menu and quit game
     *
+    * @author En Xuan Tan-modified
+    * @version 2.0
+    * @since 2022-11-11
     */
 
 public class GameScene extends ArrowKeysControls {
-    private static int win;
     boolean title;
     private static GameScene singleInstance = null;
+    Text time;
+    Timeline timeline;
+    Main main = new Main();
 
-    //prevents the instantiation from any other class.
+    /**
+     * This method is to prevents the instantiation from any other class.
+     */
     public GameScene(){}
 
     /**
     *
-    * This method is used to
-    *
+    * This method has used the Design Pattern Singleton which is the lazy instantiation
+    * @return singleInstance
     */
     public static GameScene getInstance(){
         if(singleInstance == null)
@@ -47,14 +58,11 @@ public class GameScene extends ArrowKeysControls {
         return singleInstance;
     }
 
-    public static void win(int number){
-        win = number;
-    }
     /**
      *
      * This method is used to create the Game Scene
      *
-     * @param username
+     * @param username user's name based on their input, in here, it is used to update the users' score
      * @param startgameScene Scene to create Menu Scene
      * @param startroot root for startGameScene
      * @param primaryStage Stage which display the Scenes
@@ -65,11 +73,12 @@ public class GameScene extends ArrowKeysControls {
      */
     public void play(String username, Scene startgameScene, Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
         this.GameRoot = GameRoot;
-        //resets stopwatch to 0
+        //resets stopwatch and win to 0
         this.mins = 0;
         this.secs = 0;
         this.millis = 0;
         this.score = 0;
+        AtomicBoolean mute = new AtomicBoolean(true);
         
         Text timeused = new Text();
         timeused.setText("TIME USED :");
@@ -107,10 +116,10 @@ public class GameScene extends ArrowKeysControls {
 
         Text intruct = new Text();
         GameRoot.getChildren().add(intruct);
-        intruct.setText("Shortcuts:\nPress M - Return Menu\nPress Esc - Quit Game");
+        intruct.setText("Shortcuts:\nPress M - Return Menu\nPress Esc - Quit Game\nPress P - Control Music");
         intruct.setFont(Font.font("Courier New", FontWeight.BOLD,20));
         intruct.setFill(Color.web("#E5E7E9"));
-        intruct.relocate(720, 625);
+        intruct.relocate(710, 605);
 
         randomFillNumber(1);
         randomFillNumber(1);
@@ -143,6 +152,15 @@ public class GameScene extends ArrowKeysControls {
                     main.restart(primaryStage);
 
                 }
+            }else if (key.getCode() == KeyCode.P){
+                //Create M button
+                if(mute.get()){
+                    Main.mediaPlayer.pause();
+                    mute.set(false);
+                }else{
+                    Main.mediaPlayer.play();
+                    mute.set(true);
+                }
             }
 
             scoreText.setText(this.score + "");
@@ -158,7 +176,7 @@ public class GameScene extends ArrowKeysControls {
 
                 }
 
-            }else if(win == 2048){
+            }else if(haveEmptyCell == 0){
                 UpdateScore.modifyScore(username, this.score, time, StartGame.diff);
                 this.title = true;
                 timeline.stop();

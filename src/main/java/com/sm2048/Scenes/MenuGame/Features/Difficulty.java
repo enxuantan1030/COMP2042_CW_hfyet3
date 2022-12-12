@@ -2,15 +2,15 @@ package com.sm2048.Scenes.MenuGame.Features;
 
 import java.util.Objects;
 
+/**
+ * This class is used to return value based of users' choice
+ *
+ * @author En Xuan Tan
+ * @version 1.0
+ * @since 2022-11-11
+ */
 public abstract class Difficulty extends GameTitle {
 
-    /**
-     *
-     * This method is used to return the value of n value
-     *
-     * @param level difficulty chose by users
-     * @return value is passed back to the method to create the level desired by the users
-     */
     @Override
     public int ChooseDifficulty(String level){
 

@@ -24,5 +24,9 @@ module com.example.demo {
     opens com.sm2048.Scenes.MenuGame.Features to javafx.fxml;
     exports com.sm2048.Scenes.EndGame.Features;
     opens com.sm2048.Scenes.EndGame.Features to javafx.fxml;
+    exports com.sm2048.Scenes.InGame.Features;
+    opens com.sm2048.Scenes.InGame.Features to javafx.fxml;
+    exports com.sm2048.Scenes.InGame.GenerateGameCells;
+    opens com.sm2048.Scenes.InGame.GenerateGameCells to javafx.fxml;
 
 }

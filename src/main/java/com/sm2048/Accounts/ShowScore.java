@@ -1,6 +1,5 @@
 package com.sm2048.Accounts;
 
-import com.sm2048.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
@@ -10,7 +9,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ * This class is used to show score in ShowScore.fxml based on difficulty choose by users
+ *
+ * @author En Xuan Tan
+ * @version 2.0
+ * @since 2022-11-11
+ */
 public class ShowScore {
+
+    /**
+     * This is used to get the difficulty chosen by users
+     */
+    public static int Content;
 
     private static ShowScore singleInstance = null;
 
@@ -25,35 +37,37 @@ public class ShowScore {
         return singleInstance;
     }
 
+    /**
+     * Text field which to display all Contents from the file
+     */
     @FXML
-    private TextArea highScoreList3;
+    public TextArea highScoreList;
 
     /**
      * Sets the text for the high score list when the contents of the fxml file have been completely loaded.
      *
      * @throws IOException if fail to load file
      */
-    public void initialize() throws IOException {
-        highScoreList3.setText(sortLines3());
+
+    public void initialize() throws IOException{
+
+        highScoreList.setText(readFile());
     }
 
     /**
      * Reads all the content from a file,
-     * <a href="file:C:\Users\lisah\IdeaProjects\COMP2042_CW_hfylh2\highScoreList.txt">
-     *  * highScoreList.txt</a>, which includes usernames and scores.
      * Sorts the scores of all users in descending order and returns a sorted high score list.
      *
      * @return sorted high score list
      * @throws IOException if fail to load file
      */
-    private String sortLines3() throws IOException {
-        String allContent = new String(Files.readAllBytes(Paths.get(Main.data_path3x3)));
-        ArrayList<String> str = new ArrayList<>(Arrays.asList(allContent.split("\n")));
 
-        // sort in descending order
-//        str.sort((o1, o2) -> Integer.compare(
-//                Integer.parseInt(o2.substring(o2.indexOf(" ") + 1)),
-//                Integer.parseInt(o1.substring(o1.indexOf(" ") + 1))));
+    public String readFile() throws IOException {
+        String FilePath = ChooseFile.File(Content);
+        assert FilePath != null;
+        String allContent = new String(Files.readAllBytes(Paths.get(FilePath)));
+
+        ArrayList<String> str = new ArrayList<>(Arrays.asList(allContent.split("\n")));
 
         return String.join("\n", str);
     }

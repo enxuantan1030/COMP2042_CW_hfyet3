@@ -1,7 +1,5 @@
 package com.sm2048.Scenes.MenuGame.Features;
 
-import com.sm2048.Scenes.InGame.Variables;
-import com.sm2048.Scenes.MenuGame.Features.Difficulty;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -10,6 +8,13 @@ import javafx.scene.paint.Stop;
 
 import java.util.Objects;
 
+/**
+ * This class is used to change theme in In-Game and EndGame scene
+ *
+ * @author En Xuan Tan
+ * @version 1.0
+ * @since 2022-11-11
+ */
 public abstract class Theme extends Difficulty {
 
     @Override

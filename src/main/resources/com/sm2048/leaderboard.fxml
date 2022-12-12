@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <StackPane prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sm2048.Accounts.Leaderboard">
-    <Button fx:id="3x3" onAction="#handleButtonPress3" text="3x3" prefHeight="34.0" prefWidth="82.0" translateY="-50.0"/>
-    <Button fx:id="4x4" onAction="#handleButtonPress4" text="4x4" prefHeight="34.0" prefWidth="82.0"/>
-    <Button fx:id="5x5" onAction="#handleButtonPress5" text="5x5" prefHeight="34.0" prefWidth="82.0" translateY="50.0"/>
-    <Button fx:id="6x6" onAction="#handleButtonPress6" text="6x6" prefHeight="34.0" prefWidth="82.0" translateY="100.0"/>
-    <Button fx:id="7x7" onAction="#handleButtonPress7" text="7x7" prefHeight="34.0" prefWidth="82.0" translateY="150.0"/>
+   <TextArea fx:id="LeaderboardTitle" editable="false" prefHeight="13.0" prefWidth="62.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-control-inner-background:#A9DFBF; " text="     Choose Difficulty level to see high score list" />
+   <ImageView fx:id="imageView" fitHeight="114.0" fitWidth="147.0" translateY="150.0" translateX="-100.0" pickOnBounds="true" preserveRatio="true">
+   </ImageView>
+    <Button fx:id="3x3" onAction="#handleButtonPress3" prefHeight="34.0" prefWidth="82.0" style="-fx-font-size: 20; -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #A9DFBF 0%, #0B5345 50%); -fx-font-weight: BOLD;" text="3x3" translateY="-50.0" />
+    <Button fx:id="4x4" onAction="#handleButtonPress4" prefHeight="34.0" prefWidth="82.0" style="-fx-font-size: 20; -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #A9DFBF 0%, #0B5345 50%); -fx-font-weight: BOLD;" text="4x4" />
+    <Button fx:id="5x5" onAction="#handleButtonPress5" prefHeight="34.0" prefWidth="82.0" style="-fx-font-size: 20; -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #A9DFBF 0%, #0B5345 50%); -fx-font-weight: BOLD;" text="5x5" translateY="50.0" />
+    <Button fx:id="6x6" onAction="#handleButtonPress6" prefHeight="34.0" prefWidth="82.0" style="-fx-font-size: 20; -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #A9DFBF 0%, #0B5345 50%); -fx-font-weight: BOLD;" text="6x6" translateY="100.0" />
+    <Button fx:id="7x7" onAction="#handleButtonPress7" prefHeight="34.0" prefWidth="82.0" style="-fx-font-size: 20; -fx-text-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, #A9DFBF 0%, #0B5345 50%); -fx-font-weight: BOLD;" text="7x7" translateY="150.0" />
 </StackPane>

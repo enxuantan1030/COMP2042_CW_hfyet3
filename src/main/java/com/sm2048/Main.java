@@ -14,7 +14,6 @@ import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 import javafx.scene.media.*;
 import javafx.util.Duration;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -26,42 +25,66 @@ import java.util.Scanner;
  *
  * This class is used to launch the program and triggers the program to open a window for the game
  *
+ * @author En Xuan Tan-modified
+ * @version 1.0
+ * @since 2022-11-11
  */
 public class Main extends Application {
     static final int WIDTH = 1000;
     static final int HEIGHT = 800;
+    /**
+     * This variable is used to store the imageview for koroks1.gif
+     */
     public static ImageView imageView1;
-    public static ImageView imageView2;
+    /**
+     * This variable is used to store the imageview for koroks3.gif
+     */
     public static ImageView imageView3;
-    public static ImageView imageView4;
+    /**
+     * This variable is used to store the path to Account3x3.txt
+     */
     public static String data_path3x3;
+    /**
+     * This variable is used to store the path to Account4x4.txt
+     */
     public static String data_path4x4;
+    /**
+     * This variable is used to store the path to Account5x5.txt
+     */
     public static String data_path5x5;
+    /**
+     * This variable is used to store the path to Account6x6.txt
+     */
     public static String data_path6x6;
+    /**
+     * This variable is used to store the path to Account7x7.txt
+     */
     public static String data_path7x7;
-    private static String leaderboard;
+    /**
+     * This variable is used to store the path to leaderboard.fxml
+     */
     public static URL fxml;
-    public static URL score3x3;
-    public static URL score4x4;
-    public static URL score5x5;
-    public static URL score6x6;
-    public static URL score7x7;
+    /**
+     * This variable is used to store the path to ShowScore.fxml
+     */
+    public static URL score;
+    /**
+     * This variable is used to store the imageview for koroks4.gif
+     */
+    public static Image image4;
+
+    /**
+     * This variable is used to play the audio 2048.mp3
+     */
+    public static MediaPlayer mediaPlayer;
     private Group gameRoot = new Group();
     private Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(80, 71, 143));
     private static Scanner input= new Scanner(System.in);
 
-    public static String getLeaderboard() {
-        return leaderboard;
-    }
-
-    public static void setLeaderboard(String leaderboard) {
-        Main.leaderboard = leaderboard;
-    }
-
     /**
      *
      * This method is used to modify the Scene
-     * @param gameScene
+     * @param gameScene modify gamescene
      */
     public void setGameScene(Scene gameScene) {
         this.gameScene = gameScene;
@@ -70,16 +93,26 @@ public class Main extends Application {
     /**
      *
      * This method is used to modify the root of the scene
-     * @param gameRoot
+     * @param gameRoot modify gameRoot
      */
     public void setGameRoot(Group gameRoot) {
         this.gameRoot = gameRoot;
     }
 
+    /**
+     * This method is used to restart game
+     *
+     * @param stage Stage to restart game
+     */
     public void restart(Stage stage) {
         startGame(stage);
     }
 
+    /**
+     * This method is used to setting up Scene, root for the program
+     *
+     * @param stage Stage to start game
+     */
     public void startGame(Stage stage){
 
         Group gameRoot = new Group();
@@ -106,6 +139,11 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * This method is mainly used to get path to resources
+     *
+     * @param primaryStage stage for the program
+     */
     @Override
 
     public void start(Stage primaryStage) throws URISyntaxException, FileNotFoundException {
@@ -116,12 +154,6 @@ public class Main extends Application {
         Image image = new Image(new FileInputStream(gif_path));
         imageView1 = new ImageView(image);
 
-        URL gif2_resource = getClass().getResource("koroks4.gif");
-        assert gif2_resource != null;
-        String gif2_path = Paths.get(gif2_resource.toURI()).toString();
-        Image image2 = new Image(new FileInputStream(gif2_path));
-        imageView2 = new ImageView(image2);
-
         URL gif3_resource = getClass().getResource("koroks3.gif");
         assert gif3_resource != null;
         String gif3_path = Paths.get(gif3_resource.toURI()).toString();
@@ -131,15 +163,14 @@ public class Main extends Application {
         URL gif4_resource = getClass().getResource("koroks4.gif");
         assert gif4_resource != null;
         String gif4_path = Paths.get(gif4_resource.toURI()).toString();
-        Image image4 = new Image(new FileInputStream(gif4_path));
-        imageView4 = new ImageView(image4);
+        image4 = new Image(new FileInputStream(gif4_path));
 
         URL resource = getClass().getResource("2048.mp3");
         assert resource != null;
         String path = Paths.get(resource.toURI()).toString();
         File file = new File(path);
         Media media = new Media(file.toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
         mediaPlayer.play();
 
@@ -164,11 +195,7 @@ public class Main extends Application {
         data_path7x7 = Paths.get(data7x7.toURI()).toString();
 
         fxml = getClass().getResource("leaderboard.fxml");
-        score3x3 = getClass().getResource("ShowScore3.fxml");
-        score4x4 = getClass().getResource("ShowScore4.fxml");
-        score5x5 = getClass().getResource("ShowScore5.fxml");
-        score6x6 = getClass().getResource("ShowScore6.fxml");
-        score7x7 = getClass().getResource("ShowScore7.fxml");
+        score = getClass().getResource("ShowScore.fxml");
 
         startGame(primaryStage);
     }
@@ -176,7 +203,7 @@ public class Main extends Application {
     /**
      *
      * This method is used to large the program
-     *
+     * @param args used to start the program
      */
     public static void main(String[] args) {
         launch(args);

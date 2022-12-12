@@ -1,25 +1,42 @@
 package com.sm2048.Accounts;
 
 import com.sm2048.Main;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
-import static com.sm2048.Accounts.ChooseFile.File;
 
+/**
+ * This class is a controller for leaderboard.fxml,
+ * it is used to open ShowScore.fxml file to display high score list based on difficulty which chosen by the users
+ *
+ * @author En Xuan Tan
+ * @version 2.0
+ * @since 2022-11-11
+ */
 public class Leaderboard {
 
-    public void switchs3(){
+    /**
+     * This variable is used to display Leaderboard Title
+     */
+    public TextArea LeaderboardTitle;
+
+    /**
+     * This method is used to open Showscore.fxml
+     */
+    public void switchs() {
+
         Parent root1;
         try {
-
-            root1 = FXMLLoader.load(Main.score3x3);
+            root1 = FXMLLoader.load(Main.score);
             Stage stage = new Stage();
-            stage.setTitle("High Score 3x3");
+            stage.setTitle("High Score");
             stage.setScene(new Scene(root1, 500, 400));
             stage.show();
 
@@ -29,87 +46,61 @@ public class Leaderboard {
         }
     }
 
-    public void switchs4(){
-        Parent root1;
-        try {
+    /**
+     * This variable is used to set the Image in leaderboard
+     */
+    @FXML
+    private ImageView imageView;
 
-            root1 = FXMLLoader.load(Main.score4x4);
-            Stage stage = new Stage();
-            stage.setTitle("High Score 4x4");
-            stage.setScene(new Scene(root1, 500, 400));
-            stage.show();
-
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+    /**
+     * This method is used to initialize the image in leaderboard
+     */
+    public void initialize() {
+        imageView.setImage(Main.image4);
     }
 
-    public void switchs5(){
-        Parent root1;
-        try {
+    /**
+     * This method is used to handle 3x3 button on press in leaderboard.fxml
+     */
+    public void handleButtonPress3(){
+        ShowScore.Content = 3;
+        switchs();
 
-            root1 = FXMLLoader.load(Main.score5x5);
-            Stage stage = new Stage();
-            stage.setTitle("High Score 5x5");
-            stage.setScene(new Scene(root1, 500, 400));
-            stage.show();
-
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void switchs6(){
-        Parent root1;
-        try {
+    /**
+     * This method is used to handle 4x4 button on press in leaderboard.fxml
+     */
+    public void handleButtonPress4(){
+        ShowScore.Content = 4;
+        switchs();
 
-            root1 = FXMLLoader.load(Main.score6x6);
-            Stage stage = new Stage();
-            stage.setTitle("High Score 6x6");
-            stage.setScene(new Scene(root1, 500, 400));
-            stage.show();
-
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void switchs7(){
-        Parent root1;
-        try {
+    /**
+     * This method is used to handle 5x5 button on press in leaderboard.fxml
+     */
+    public void handleButtonPress5(){
+        ShowScore.Content = 5;
+        switchs();
 
-            root1 = FXMLLoader.load(Main.score7x7);
-            Stage stage = new Stage();
-            stage.setTitle("High Score 7x7");
-            stage.setScene(new Scene(root1, 500, 400));
-            stage.show();
-
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public void handleButtonPress3() {
-        switchs3();
+    /**
+     * This method is used to handle 6x6 button on press in leaderboard.fxml
+     */
+    public void handleButtonPress6(){
+        ShowScore.Content = 6;
+        switchs();
+
     }
 
-    public void handleButtonPress4() {
-        switchs4();
-    }
+    /**
+     * This method is used to handle 7x7 button on press in leaderboard.fxml
+     */
+    public void handleButtonPress7(){
+        ShowScore.Content = 7;
+        switchs();
 
-    public void handleButtonPress5() {
-        switchs5();
-    }
-
-    public void handleButtonPress6() {
-        switchs6();
-    }
-
-    public void handleButtonPress7() {
-        switchs7();
     }
 }

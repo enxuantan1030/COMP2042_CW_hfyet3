@@ -6,8 +6,12 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 
 /**
- * This class is used to extract methods out from StartGame.java
- * So that it is easier to read the codes
+ * This class is used to inherit GeneralComponents and implement EndGameInterface and display Quit Button
+ *
+ * @author En Xuan Tan
+ * @version 1.0
+ * @since 2022-11-11
+ *
  */
 public abstract class Quit_button extends GeneralComponents implements EndGameInterface {
 

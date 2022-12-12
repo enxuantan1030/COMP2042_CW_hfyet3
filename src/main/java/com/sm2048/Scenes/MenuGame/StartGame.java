@@ -3,7 +3,7 @@ package com.sm2048.Scenes.MenuGame;
 import com.sm2048.Accounts.AddName;
 import com.sm2048.Main;
 import com.sm2048.Scenes.InGame.GameScene;
-import com.sm2048.Scenes.InGame.Variables;
+import com.sm2048.Scenes.InGame.Features.Variables;
 import com.sm2048.Scenes.MenuGame.Features.Theme;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,32 +17,37 @@ import java.util.Optional;
 import static javafx.application.Application.launch;
 
 
-     /**
-     *
-     * This class is used for displaying Menu Scene, feature including:
-     * display game title, able to start game and quit game, choose theme and difficulty
-     *
-     */
+/**
+ * This class is used for displaying Menu Scene, feature including:
+ * display game title, leader board, start game and quit game, choose theme and difficulty
+ *
+ * @author En Xuan Tan
+ * @version 1.0
+ * @since 2022-11-11
+ */
 public class StartGame extends Theme {
 
-        public static int diff;
-        private static StartGame singleInstance = null;
-        private Group root;
-        static int lvln = 7;
-        String c1, c2;
+    /**
+     * This variable is use to get the difficulty chosen by users
+     */
+    public static int diff;
+    private static StartGame singleInstance = null;
+    private Group root;
+    static int lvln = 7;
+    String c1, c2;
 
-        /**
-        *
-        * This class is used for displaying Menu Scene, feature including:
-        *
-        */
-        public static StartGame getInstance(){
-            if(singleInstance == null)
-                singleInstance= new StartGame();
-            return singleInstance;
-        }
+    /**
+     *
+     * This method has used the Design Pattern Singleton which is the lazy instantiation
+     * @return singleInstance
+     */
+    public static StartGame getInstance(){
+        if(singleInstance == null)
+            singleInstance= new StartGame();
+        return singleInstance;
+    }
 
-         /**
+    /**
      *
      * This method is used to create the Menu Scene
      *
@@ -54,106 +59,94 @@ public class StartGame extends Theme {
      * @param GameRoot root for gameScene
      * @param EndGameRoot root for endgameScene
      */
-        public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
-            this.root = root;
+    public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
+        this.root = root;
 
-            Main.imageView1.relocate(610,230);
-            Main.imageView1.setFitHeight(120);
-            Main.imageView1.setFitWidth(100);
-            Main.imageView1.setPreserveRatio(true);
-            root.getChildren().add(Main.imageView1);
+        Main.imageView1.relocate(630,230);
+        Main.imageView1.setFitHeight(120);
+        Main.imageView1.setFitWidth(100);
+        Main.imageView1.setPreserveRatio(true);
+        root.getChildren().add(Main.imageView1);
 
-            Main.imageView2.relocate(290,605);
-            Main.imageView2.setFitHeight(120);
-            Main.imageView2.setFitWidth(140);
-            Main.imageView2.setPreserveRatio(true);
-            root.getChildren().add(Main.imageView2);
+        Main.imageView3.relocate(800,600);
+        Main.imageView3.setFitHeight(120);
+        Main.imageView3.setFitWidth(100);
+        Main.imageView3.setPreserveRatio(true);
+        root.getChildren().add(Main.imageView3);
 
-            /*Main.imageView3.relocate(800,600);
-            Main.imageView3.setFitHeight(120);
-            Main.imageView3.setFitWidth(100);
-            Main.imageView3.setPreserveRatio(true);
-            root.getChildren().add(Main.imageView3);
+        GameScene game = new GameScene();
+        //game title
+        GameTitle(root);
 
-            Main.imageView4.relocate(900,600);
-            Main.imageView4.setFitHeight(120);
-            Main.imageView4.setFitWidth(100);
-            Main.imageView4.setPreserveRatio(true);
-            root.getChildren().add(Main.imageView4);*/
+        //Display "Theme"
+        Text theme = new Text("Theme");
+        theme.relocate(570,500);
+        textstyle(theme, root, 27);
 
-            GameScene game = new GameScene();
-            //game title
-            GameTitle(root);
+        //Drop down menu for choosing theme colour in game
+        final ComboBox<String> themedropbox = new ComboBox<>();
+        themedropbox.getItems().addAll(
+                "Default(Green)",
+                "Blue",
+                "Yellow",
+                "Black",
+                "Pink",
+                "Purple"
+        );
+        root.getChildren().add(themedropbox);
+        themedropbox.setPrefSize(200,60);
+        themedropbox.relocate(520,530);
+        themedropbox.setValue("Default(Green)");
 
-            //Display "Theme"
-            Text theme = new Text("Theme");
-            theme.relocate(570,500);
-            textstyle(theme, root, 27);
+        //Display "Difficulty"
+        Text level = new Text("Difficulty");
+        level.relocate(290,500);
+        textstyle(level, root, 25);
 
-            //Drop down menu for choosing theme colour in game
-            final ComboBox<String> themedropbox = new ComboBox<>();
-            themedropbox.getItems().addAll(
-                    "Default(Green)",
-                    "Blue",
-                    "Yellow",
-                    "Black",
-                    "Pink",
-                    "Purple"
-            );
-            root.getChildren().add(themedropbox);
-            themedropbox.setPrefSize(200,60);
-            themedropbox.relocate(520,530);
-            themedropbox.setValue("Default(Green)");
+        //Drop down menu for choosing level difficulty
+        final ComboBox<String> leveldropbox = new ComboBox<>();
+        leveldropbox.getItems().addAll(
+                "3 x 3",
+                "Default(4 x 4)",
+                "5 x 5",
+                "6 x 6",
+                "7 x 7"
+        );
+        root.getChildren().add(leveldropbox);
+        leveldropbox.setPrefSize(200,60);
+        leveldropbox.relocate(260,530);
+        leveldropbox.setValue("Default(4 x 4)");
 
-            //Display "Difficulty"
-            Text level = new Text("Difficulty");
-            level.relocate(290,500);
-            textstyle(level, root, 25);
+        //Display "ENTER YOUR NAME"
+        Text reqname = new Text("ENTER YOUR NAME");
+        reqname.relocate(377,620);
+        textstyle(reqname, root, 27);
 
-            //Drop down menu for choosing level difficulty
-            final ComboBox<String> leveldropbox = new ComboBox<>();
-            leveldropbox.getItems().addAll(
-                    "3 x 3",
-                    "Default(4 x 4)",
-                    "5 x 5",
-                    "6 x 6",
-                    "7 x 7"
-            );
-            root.getChildren().add(leveldropbox);
-            leveldropbox.setPrefSize(200,60);
-            leveldropbox.relocate(260,530);
-            leveldropbox.setValue("Default(4 x 4)");
+        //username
+        TextField name= new TextField();
+        name.setPrefSize(200,40);
+        root.getChildren().add(name);
+        name.setPromptText("Please enter your name here");
+        name.relocate(400, 650);
 
-            //Display "ENTER YOUR NAME"
-            Text reqname = new Text("ENTER YOUR NAME");
-            reqname.relocate(377,620);
-            textstyle(reqname, root, 27);
+        //Menu start button
+        Button startButton = new Button("START");
+        btnstyle(startButton, root);
+        startButton.relocate(260,400);
+        //when start button is clicked, it will be directed to the game scene
+        startButton.setOnAction(actionEvent -> {
+            String value = leveldropbox.getValue();
+            diff = ChooseDifficulty(value);
 
-            //username
-            TextField name= new TextField();
-            name.setPrefSize(200,40);
-            root.getChildren().add(name);
-            name.setPromptText("Please enter your name here");
-            name.relocate(400, 650);
+            if (name.getText().toString().matches("^[a-zA-Z]+$")|| name.getText() == null){
+                try {
+                    AddName.add(name.getText(), diff);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-            //Menu start button
-            Button startButton = new Button("START");
-            btnstyle(startButton, root);
-            startButton.relocate(260,400);
-            //when start button is clicked, it will be directed to the game scene
-            startButton.setOnAction(actionEvent -> {
-                String value = leveldropbox.getValue();
-                diff = ChooseDifficulty(value);
-
-                if (name.getText().toString().matches("^[a-zA-Z]+$")|| name.getText() == null){
-                    try {
-                        AddName.add(name.getText(), diff);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    Variables.setN(diff);
-                    DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
+                Variables.setN(diff);
+                DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
 
                 //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
@@ -163,25 +156,28 @@ public class StartGame extends Theme {
                 root.getChildren().clear();
 
             }else{
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Name");
-                    alert.setHeaderText("Please enter your name only with characters[A-Z]");
-                    alert.setContentText("Re-enter your name");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Name");
+                alert.setHeaderText("Please enter your name only with characters[A-Z]");
+                alert.setContentText("Re-enter your name");
 
-                    //when "ok" is clicked, it will terminate the program
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.get() == ButtonType.OK) {
+                //when "ok" is clicked, it will terminate the program
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
 
-                    }
                 }
-            });
+            }
+        });
 
-            //Create Quit button
-            Quitbutton(root);
+        //Create Quit button
+        Quitbutton(root);
 
-            //Create leaderboard button
-            LBbutton(root);
+        //Create leaderboard button
+        LBbutton(root);
 
-        }
+        //Create M button
+        Mutebutton(root);
 
-        }
+    }
+
+}
