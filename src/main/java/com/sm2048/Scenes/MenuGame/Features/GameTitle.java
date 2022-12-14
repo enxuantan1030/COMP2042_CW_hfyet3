@@ -1,5 +1,6 @@
 package com.sm2048.Scenes.MenuGame.Features;
 
+import com.sm2048.Scenes.General.GeneralComponents;
 import javafx.scene.Group;
 import javafx.scene.text.Text;
 
@@ -10,12 +11,18 @@ import javafx.scene.text.Text;
  * @version 1.0
  * @since 2022-11-11
  */
-public abstract class GameTitle extends QuitMenuButton {
+public class GameTitle{
+    static GeneralComponents g = new GeneralComponents();
 
-    public void GameTitle(Group root) {
+    /**
+     * This method is used to display Game Title in StartGame scene
+     *
+     * @param root use to add Game Title component into EndGame scene
+     */
+    public static void GameTitle(Group root) {
         Text text = new Text("2048");
         text.relocate(350,300);
-        textstyle(text, root, 100);
+        g.textstyle(text, root, 100);
     }
 
 }

@@ -1,12 +1,12 @@
 package com.sm2048.Scenes.InGame.GenerateGameCells;
 
-import com.sm2048.Scenes.InGame.GameScene;
+import com.sm2048.Scenes.InGame.Features.Variables;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * This class is used for generating text inside the cells
+ * This class is used for generating text for numbered cells
  *
  * @author En Xuan Tan-modified
  * @version 2.0
@@ -23,8 +23,8 @@ public class TextMaker {
     }
 
     /**
-     * This class is used for generating text
-     * @return singleInstance
+     * This method has used the Design Pattern Singleton which is the lazy instantiation
+     * @return instance of class
      */
     public static TextMaker getSingleInstance() {
         if (singleInstance == null)
@@ -34,7 +34,7 @@ public class TextMaker {
 
     /**
      *
-     * This class is used for generating text inside the cells
+     * This class is used for generating text for numbered cells
      *
      * @param input Text in the cell
      * @param xCell x-axis of cell
@@ -42,7 +42,7 @@ public class TextMaker {
      * @return text in the cell
      */
     public Text madeText(String input, double xCell, double yCell) {
-        double length = GameScene.getLENGTH();
+        double length = Variables.getLENGTH();
         double fontSize = (3 * length) / 7.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));

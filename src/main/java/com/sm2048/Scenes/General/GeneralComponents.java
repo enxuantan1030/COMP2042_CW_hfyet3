@@ -23,15 +23,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * This class is used to implement GeneralizedComponents and stores general functions can be used by every scene
- * such as Quit button, button style, textstyle and leaderboard button
+ * such as Quit button alert window, button style, text style, Mute music button and leaderboard button
  *
  * @author En Xuan Tan
  * @version 1.0
  * @since 2022-11-11
  */
-public abstract class GeneralComponents implements GeneralizedComponents {
+public class GeneralComponents implements GeneralizedComponents {
 
+    /**
+     * set the style of button when button is not hovered
+     */
     private static final String Idle = "-fx-background-color: -fx-shadow-highlight-color;";
+
+    /**
+     * set the style of button when button is hovered
+     */
     private static final String hover = "-fx-background-color: #B3B3B3;";
 
     public void quitbtn(Group root) {

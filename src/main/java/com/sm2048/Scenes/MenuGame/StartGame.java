@@ -2,8 +2,12 @@ package com.sm2048.Scenes.MenuGame;
 
 import com.sm2048.Accounts.AddName;
 import com.sm2048.Main;
+import com.sm2048.Scenes.General.GeneralComponents;
 import com.sm2048.Scenes.InGame.GameScene;
 import com.sm2048.Scenes.InGame.Features.Variables;
+import com.sm2048.Scenes.MenuGame.Features.Difficulty;
+import com.sm2048.Scenes.MenuGame.Features.GameTitle;
+import com.sm2048.Scenes.MenuGame.Features.QuitMenuButton;
 import com.sm2048.Scenes.MenuGame.Features.Theme;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -25,7 +29,7 @@ import static javafx.application.Application.launch;
  * @version 1.0
  * @since 2022-11-11
  */
-public class StartGame extends Theme {
+public class StartGame {
 
     /**
      * This variable is use to get the difficulty chosen by users
@@ -35,11 +39,11 @@ public class StartGame extends Theme {
     private Group root;
     static int lvln = 7;
     String c1, c2;
-
+    GeneralComponents g = new GeneralComponents();
     /**
      *
      * This method has used the Design Pattern Singleton which is the lazy instantiation
-     * @return singleInstance
+     * @return instance of class
      */
     public static StartGame getInstance(){
         if(singleInstance == null)
@@ -62,12 +66,14 @@ public class StartGame extends Theme {
     public void game(Scene startGameScene, Group root, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group EndGameRoot) {
         this.root = root;
 
+        //set the location, size and add koroks1.gif component into StartGame scene
         Main.imageView1.relocate(630,230);
         Main.imageView1.setFitHeight(120);
         Main.imageView1.setFitWidth(100);
         Main.imageView1.setPreserveRatio(true);
         root.getChildren().add(Main.imageView1);
 
+        //set the location, size and add koroks1.gif component into StartGame scene
         Main.imageView3.relocate(800,600);
         Main.imageView3.setFitHeight(120);
         Main.imageView3.setFitWidth(100);
@@ -76,12 +82,12 @@ public class StartGame extends Theme {
 
         GameScene game = new GameScene();
         //game title
-        GameTitle(root);
+        GameTitle.GameTitle(root);
 
         //Display "Theme"
         Text theme = new Text("Theme");
-        theme.relocate(570,500);
-        textstyle(theme, root, 27);
+        theme.relocate(570,500); //set the location of Theme word
+        g.textstyle(theme, root, 27); // style the text Theme
 
         //Drop down menu for choosing theme colour in game
         final ComboBox<String> themedropbox = new ComboBox<>();
@@ -93,15 +99,15 @@ public class StartGame extends Theme {
                 "Pink",
                 "Purple"
         );
-        root.getChildren().add(themedropbox);
-        themedropbox.setPrefSize(200,60);
-        themedropbox.relocate(520,530);
-        themedropbox.setValue("Default(Green)");
+        root.getChildren().add(themedropbox); //add themedropbox component into StartGame scene
+        themedropbox.setPrefSize(200,60);//set the size of the drop down menu
+        themedropbox.relocate(520,530); //set the location of Theme word
+        themedropbox.setValue("Default(Green)"); //set the Default value for drop down menu
 
         //Display "Difficulty"
         Text level = new Text("Difficulty");
         level.relocate(290,500);
-        textstyle(level, root, 25);
+        g.textstyle(level, root, 25);
 
         //Drop down menu for choosing level difficulty
         final ComboBox<String> leveldropbox = new ComboBox<>();
@@ -120,7 +126,7 @@ public class StartGame extends Theme {
         //Display "ENTER YOUR NAME"
         Text reqname = new Text("ENTER YOUR NAME");
         reqname.relocate(377,620);
-        textstyle(reqname, root, 27);
+        g.textstyle(reqname, root, 27);
 
         //username
         TextField name= new TextField();
@@ -131,13 +137,13 @@ public class StartGame extends Theme {
 
         //Menu start button
         Button startButton = new Button("START");
-        btnstyle(startButton, root);
+        g.btnstyle(startButton, root);
         startButton.relocate(260,400);
         //when start button is clicked, it will be directed to the game scene
         startButton.setOnAction(actionEvent -> {
             String value = leveldropbox.getValue();
-            diff = ChooseDifficulty(value);
-
+            diff = Difficulty.ChooseDifficulty(value);
+            //restricts the users' name as characters A-Z only
             if (name.getText().toString().matches("^[a-zA-Z]+$")|| name.getText() == null){
                 try {
                     AddName.add(name.getText(), diff);
@@ -145,23 +151,26 @@ public class StartGame extends Theme {
                     e.printStackTrace();
                 }
 
+                //sets the value on n in Variable, which is used to create difficulty based on users' inputs
                 Variables.setN(diff);
-                DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
+                Theme.DBChooseTheme(themedropbox.getValue(), gameScene, endGameScene);
 
                 //switch Scene to gameScene
                 primaryStage.setScene(gameScene);
 
                 //links the Scene to GameScene.play method
-                GameScene.getInstance().play(name.getText(), startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
+                GameScene.getSingleInstance().play(name.getText(), startGameScene, root, primaryStage, gameScene, endGameScene, GameRoot, EndGameRoot);
                 root.getChildren().clear();
 
             }else{
+
+                //Alert window when user does not enter a name or inputs String other than characters
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Name");
                 alert.setHeaderText("Please enter your name only with characters[A-Z]");
                 alert.setContentText("Re-enter your name");
 
-                //when "ok" is clicked, it will terminate the program
+                //when "ok" is clicked, it will close the alert window
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
 
@@ -170,13 +179,13 @@ public class StartGame extends Theme {
         });
 
         //Create Quit button
-        Quitbutton(root);
+        QuitMenuButton.Quitbutton(root);
 
         //Create leaderboard button
-        LBbutton(root);
+        g.LBbutton(root);
 
         //Create M button
-        Mutebutton(root);
+        g.Mutebutton(root);
 
     }
 

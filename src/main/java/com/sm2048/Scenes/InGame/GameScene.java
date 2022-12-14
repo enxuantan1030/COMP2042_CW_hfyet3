@@ -3,7 +3,8 @@ package com.sm2048.Scenes.InGame;
 import com.sm2048.Accounts.UpdateScore;
 import com.sm2048.Main;
 import com.sm2048.Scenes.EndGame.EndGame;
-import com.sm2048.Scenes.InGame.Features.ArrowKeysControls;
+import com.sm2048.Scenes.General.GeneralComponents;
+import com.sm2048.Scenes.InGame.Features.*;
 import com.sm2048.Scenes.InGame.GenerateGameCells.Cell;
 import com.sm2048.Scenes.MenuGame.StartGame;
 import javafx.animation.KeyFrame;
@@ -25,6 +26,9 @@ import javafx.util.Duration;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static com.sm2048.Scenes.InGame.Features.GameMovement.cells;
+import static com.sm2048.Scenes.InGame.Features.Variables.*;
+
 /**
     *
     * This class is used for displaying Game Scene, feature including:
@@ -40,21 +44,25 @@ public class GameScene extends ArrowKeysControls {
     private static GameScene singleInstance = null;
     Text time;
     Timeline timeline;
-    Main main = new Main();
-
     /**
-     * This method is to prevents the instantiation from any other class.
+     * Root for GameScene and it is set as public so that other class are able to access it
+     */
+    public Group GameRoot;
+    Main main = new Main();
+    GeneralComponents g = new GeneralComponents();
+    /**
+     * This method is to prevent the instantiation from any other class.
      */
     public GameScene(){}
 
     /**
-    *
-    * This method has used the Design Pattern Singleton which is the lazy instantiation
-    * @return singleInstance
-    */
-    public static GameScene getInstance(){
-        if(singleInstance == null)
-            singleInstance= new GameScene();
+     *
+     * This method has used the Design Pattern Singleton which is the lazy instantiation
+     * @return instance of class
+     */
+    public static GameScene getSingleInstance() {
+        if (singleInstance == null)
+            singleInstance = new GameScene();
         return singleInstance;
     }
 
@@ -73,47 +81,51 @@ public class GameScene extends ArrowKeysControls {
      */
     public void play(String username, Scene startgameScene, Group startroot, Stage primaryStage, Scene gameScene, Scene endGameScene, Group GameRoot, Group endGameRoot) {
         this.GameRoot = GameRoot;
-        //resets stopwatch and win to 0
-        this.mins = 0;
-        this.secs = 0;
-        this.millis = 0;
-        this.score = 0;
+        //resets stopwatch and score to 0
+        Variables.mins = 0;
+        Variables.secs = 0;
+        Variables.millis = 0;
+        Variables.score = 0;
         AtomicBoolean mute = new AtomicBoolean(true);
-        
+
+        //display "TIME USED" text
         Text timeused = new Text();
         timeused.setText("TIME USED :");
-        textstyle(timeused, GameRoot, 30);
+        g.textstyle(timeused, GameRoot, 30);
         timeused.relocate(750, 200);
 
+        //display the stopwatch
         time = new Text("00:00:000");
-        timeline = new Timeline(new KeyFrame(Duration.millis(1), event -> change(time)));
+        timeline = new Timeline(new KeyFrame(Duration.millis(1), event -> Stopwatch.change(time))); // change text of stopwatch
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(false);
-        timeline.play();
-        textstyle(time, GameRoot, 30);
+        timeline.play(); //start stopwatch
+        g.textstyle(time, GameRoot, 30);
         time.relocate(750, 250);
 
+        //create number of cells
         for (int i = 0; i < n; i++) {
-//            System.out.println(n);
+
             for (int j = 0; j < n; j++) {
-//                System.out.println("j "+j);
-//                System.out.println("second" + n);
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
                         (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, GameRoot);
             }
 
         }
-        
+
+        //display "SCORE" text
         Text score = new Text();
         score.setText("SCORE :");
-        textstyle(score, GameRoot, 30);
+        g.textstyle(score, GameRoot, 30);
         score.relocate(750, 100);
 
+        //display score earned by users
         Text scoreText = new Text();
         scoreText.relocate(750, 150);
-        textstyle(scoreText, GameRoot, 30);
+        g.textstyle(scoreText, GameRoot, 30);
         scoreText.setText("0");
 
+        //display shortcuts instructions
         Text intruct = new Text();
         GameRoot.getChildren().add(intruct);
         intruct.setText("Shortcuts:\nPress M - Return Menu\nPress Esc - Quit Game\nPress P - Control Music");
@@ -121,8 +133,9 @@ public class GameScene extends ArrowKeysControls {
         intruct.setFill(Color.web("#E5E7E9"));
         intruct.relocate(710, 605);
 
-        randomFillNumber(1);
-        randomFillNumber(1);
+        //Create two numbered cells start of the game
+        GameMovement.randomFillNumber();
+        GameMovement.randomFillNumber();
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
             int haveEmptyCell;
@@ -135,9 +148,9 @@ public class GameScene extends ArrowKeysControls {
             } else if (key.getCode() == KeyCode.RIGHT) {
                 GameScene.this.moveRight();
             } else if (key.getCode() == KeyCode.ESCAPE) {
-                quitbtn(GameRoot);
+                g.quitbtn(GameRoot);
             } else if (key.getCode() == KeyCode.M) {
-
+                //return to menu
                 Alert gamealert = new Alert(Alert.AlertType.CONFIRMATION);
                 gamealert.setTitle("Dialog Menu");
                 gamealert.setHeaderText("Back to Menu");
@@ -153,7 +166,7 @@ public class GameScene extends ArrowKeysControls {
 
                 }
             }else if (key.getCode() == KeyCode.P){
-                //Create M button
+                //Create M button to control music play/pause
                 if(mute.get()){
                     Main.mediaPlayer.pause();
                     mute.set(false);
@@ -163,29 +176,38 @@ public class GameScene extends ArrowKeysControls {
                 }
             }
 
-            scoreText.setText(this.score + "");
-            haveEmptyCell = GameScene.this.haveEmptyCell();
+            //Display score
+            scoreText.setText(Variables.score + "");
+            haveEmptyCell = MovementEmptyCell.haveEmptyCell();
+            //if all the cells are fully filled and no movement can be made furthermore
             if (haveEmptyCell == -1) {
-                if (GameScene.this.canNotMove()) {
-                    UpdateScore.modifyScore(username, this.score, time, StartGame.diff);
+                if (CannotMove.canNotMove()) {
+                    //Update the score of the users in the file
+                    UpdateScore.modifyScore(username, Variables.score, time, StartGame.diff);
+                    //means that users lose the game
                     this.title = false;
+                    //Pause the stopwatch
                     timeline.stop();
+                    //switch scene
                     primaryStage.setScene(endGameScene);
-                    EndGame.getInstance().endGameShow(this.title, startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
+                    EndGame.getInstance().endGameShow(this.title, startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, Variables.score, this.time);
                     GameRoot.getChildren().clear();
 
                 }
-
+            //if users manage to have a numbered cell of 2048
             }else if(haveEmptyCell == 0){
-                UpdateScore.modifyScore(username, this.score, time, StartGame.diff);
+                UpdateScore.modifyScore(username, Variables.score, time, StartGame.diff);
+                //means that users win the game
                 this.title = true;
                 timeline.stop();
                 primaryStage.setScene(endGameScene);
-                EndGame.getInstance().endGameShow(this.title,startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, this.score, this.time);
+                EndGame.getInstance().endGameShow(this.title,startgameScene, startroot, primaryStage, gameScene, endGameScene, GameRoot, endGameRoot, Variables.score, this.time);
                 GameRoot.getChildren().clear();
 
+                //if the cells are not fully filled
             }else if(haveEmptyCell == 1 && key.getCode() == KeyCode.DOWN || key.getCode() == KeyCode.UP || key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.RIGHT)
-                GameScene.this.randomFillNumber(2);
+                //create numbered cell in game
+                GameMovement.randomFillNumber();
         }));
 
     }

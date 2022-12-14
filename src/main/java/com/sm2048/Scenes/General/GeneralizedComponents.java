@@ -31,7 +31,7 @@ public interface GeneralizedComponents {
     /**
      * This method id used to style text
      *
-     * @param t to get the text from the scene
+     * @param t    to get the text from the scene
      * @param root use to add text component into scene
      * @param size use to set the size of the text
      */

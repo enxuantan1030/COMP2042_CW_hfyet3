@@ -194,6 +194,7 @@ public class Main extends Application {
         data_path7x7 = Paths.get(data7x7.toURI()).toString();
 
         fxml = getClass().getResource("leaderboard.fxml");
+
         ShowScore = getClass().getResource("ShowScore.fxml");
 
         startGame(primaryStage);

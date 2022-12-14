@@ -9,16 +9,23 @@ import javafx.scene.paint.Stop;
 import java.util.Objects;
 
 /**
- * This class is used to change theme in In-Game and EndGame scene
+ * This class is used to change theme in Game and EndGame scenes (get the theme chose by users from StartGame.java)
  *
  * @author En Xuan Tan
  * @version 1.0
  * @since 2022-11-11
  */
-public abstract class Theme extends Difficulty {
+public class Theme  {
 
-    @Override
-    public void ChooseTheme(String c1, String c2, Scene s1, Scene s2){
+    /**
+     *This method is used to modify theme for Game and EndGame scenes
+     *
+     *@param c1 first colour for gradient
+     *@param c2 second colour for gradient
+     *@param s1 modify GameScene theme
+     *@param s2 modify EndGameScene theme
+     */
+    public static void ChooseTheme(String c1, String c2, Scene s1, Scene s2){
         //Gradient colour function referred to website -
         s1.setFill(new LinearGradient(
                 0, 0, 1, 1, true,
@@ -32,7 +39,14 @@ public abstract class Theme extends Difficulty {
                 new Stop(1, Color.web(c2))));
     }
 
-    public void DBChooseTheme(String c, Scene gameScene, Scene endGameScene){
+    /**
+     * This method is used to get the colour option chosen by user from StartGame.java
+     *
+     *@param c get the colour option chosen by user from StartGame.java
+     *@param gameScene use to modify GameScene scene theme
+     *@param endGameScene use to modify EndGame scene theme
+     */
+    public static void DBChooseTheme(String c, Scene gameScene, Scene endGameScene){
         if (Objects.equals(c, "Blue")){
 
             ChooseTheme("#1A5276", "#AED6F1",gameScene, endGameScene);

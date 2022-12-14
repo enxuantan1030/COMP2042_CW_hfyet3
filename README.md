@@ -44,21 +44,15 @@ Student ID: 20297487
     - Quit button will terminate the program 
 
 # Features Not Implemented
-1. JUnit Testing
-2. Build files</br>
+1. JUnit Testing</br>
 Reasons: Not familiar with it and not enough time
-
-#Bug Introduced
-- Error appears after restarting the game with choosing higher difficulty than the first time.
-  </br>E.g First choose 3x3 difficulty, after finish game/return to menu, Choose any Difficulty higher than 3x3 will cause this error
-  </br>However, if we choose 7x7 first, and after restarting the game, it does not have this error
 
 #Maintenance Performed
 - Extract methods from GameScene,StartGame,EndGame into several classes named with their functions
-- Create Interface for GameScene,StartGame,EndGame as it supports multiple inheritance from multiple class</br> E.g abstract class extends GeneralComponents implements Interface
-- Create several packages with a consistent pattern</br>E.g EndGame package contains Features package, EndGameInterface, EndGame
-- Delete unnecessary class, Account.java and method sumCellNumbersToScore in GameScene as the score is added in method moveHorizontally and moveVertically(currently in GameMovement.java)
-
+- Create Interface for GeneralComponents as it supports multiple inheritance from multiple class
+- Create several packages with a consistent pattern</br>E.g EndGame package contains Features package, EndGame
+- Delete method sumCellNumbersToScore in GameScene as the score is added in method moveHorizontally and moveVertically(currently in GameMovement.java)
+- Delete argument int turn in randomFillNumber(currently in GameMovement.java) as it is not used.
 # New Java Classes, Packages, Resources
 - Accounts
   - AddName.java
@@ -69,7 +63,6 @@ Reasons: Not familiar with it and not enough time
 
 - Scenes
   - EndGame
-    - EndGameInterface.java
     - DisplayAllScore.java
     - DisplayScore.java
     - DisplayTime.java
@@ -81,7 +74,6 @@ Reasons: Not familiar with it and not enough time
     - GeneralizedComponents.java
   
   - InGame
-    - InGameInterface.java
     - ArrowKeyControls.java
     - CannotMove.java
     - GameMovement.java
@@ -92,7 +84,6 @@ Reasons: Not familiar with it and not enough time
     - GenerateGameCells
   
   - MenuGame
-    - MenuInterface.java
     - StartGame.java
     - Difficulty.java
     - GameTitle.java
