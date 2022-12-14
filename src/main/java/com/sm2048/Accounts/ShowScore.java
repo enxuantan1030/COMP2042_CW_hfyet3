@@ -1,75 +1,105 @@
 package com.sm2048.Accounts;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.net.URL;
+import java.util.Comparator;
+import java.util.ResourceBundle;
 
+import static com.sm2048.Accounts.Account.highscore;
 
 /**
- * This class is used to show score in ShowScore.fxml based on difficulty choose by users
+ * This class is a controller for ShowScore.fxml
  *
- * @author En Xuan Tan
- * @version 2.0
- * @since 2022-11-11
+ *  @author En Xuan Tan
+ *  @version 1.0
+ *  @since 2022-11-11
  */
-public class ShowScore {
+public class ShowScore implements Initializable {
+
+    @FXML
+    private GridPane grid;
+
+    @FXML
+    private TableView<Account> tableView;
+
+    @FXML
+    private TableColumn<Account, String> tusername;
+
+    @FXML
+    private TableColumn<Account, Long> tscore;
+
+    @FXML
+    private TableColumn<Account, String> ttime;
+
+    /**
+     * This method is used to initialize the background color, datas in the column in ShowScore.fxml
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        grid.setBackground(new Background(new BackgroundFill(Color.web("#A9DFBF"), new CornerRadii(0), new Insets(0))));
+        tusername.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
+        tscore.setCellValueFactory(new PropertyValueFactory<Account, Long>("score"));
+        ttime.setCellValueFactory(new PropertyValueFactory<Account, String>("time"));
+
+        try{
+            readFile();
+        }catch(Exception e){
+            System.out.println("Error");
+        }
+        Comparator<? super Account> comparator = Comparator.comparingLong(Account::getScore).reversed();
+        FXCollections.sort(highscore, comparator);
+        tableView.setItems(highscore);
+
+    }
 
     /**
      * This is used to get the difficulty chosen by users
+     * its value is modified in Leaderboard.java as different button being press will have different value
      */
-    public static int Content;
-
-    private static ShowScore singleInstance = null;
+    public static int lvl;
 
     /**
-     * Returns an active instance of the class if it exists.
-     *
-     * @return instance of class
+     * This method is used to read all the data in a file, and split the data for different column in the table
      */
-    public static ShowScore getInstance() {
-        if (singleInstance == null)
-            singleInstance = new ShowScore();
-        return singleInstance;
+    public static void readFile(){
+        String pathfile = ChooseFile.File(lvl);
+
+        assert pathfile != null;
+        File file = new File(pathfile);
+        highscore.clear();
+        try{
+
+            BufferedReader br =new BufferedReader(new FileReader(file));
+            Object[] lines = br.lines().toArray();
+
+            for(int i= 0; i < lines.length; i++){
+                String[] row = lines[i].toString().split(" ");
+                Text user  = new Text(row[0]);
+                highscore.add(new Account(user,Long.parseLong(row[1]),row[2]));
+
+            }
+
+            br.close();
+
+        }
+        catch(Exception e){
+            System.out.println("Error");
+        }
     }
 
-    /**
-     * Text field which to display all Contents from the file
-     */
-    @FXML
-    public TextArea highScoreList;
-
-    /**
-     * Sets the text for the high score list when the contents of the fxml file have been completely loaded.
-     *
-     * @throws IOException if fail to load file
-     */
-
-    public void initialize() throws IOException{
-
-        highScoreList.setText(readFile());
-    }
-
-    /**
-     * Reads all the content from a file,
-     * Sorts the scores of all users in descending order and returns a sorted high score list.
-     *
-     * @return sorted high score list
-     * @throws IOException if fail to load file
-     */
-
-    public String readFile() throws IOException {
-        String FilePath = ChooseFile.File(Content);
-        assert FilePath != null;
-        String allContent = new String(Files.readAllBytes(Paths.get(FilePath)));
-
-        ArrayList<String> str = new ArrayList<>(Arrays.asList(allContent.split("\n")));
-
-        return String.join("\n", str);
-    }
 
 }

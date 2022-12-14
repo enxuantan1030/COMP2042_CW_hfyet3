@@ -6,9 +6,8 @@ Student ID: 20297487
 
 # Installation
 1. Install any Java IDE.**HIGHLY RECOMMENDED IntelliJ**</br>
-2. Clone reopository - https://github.com/enxuantan1030/COMP2042_CW_hfyet3 </br>
-3. Run file with Javafx, follow the steps below:</br> for [Eclipse](https://www.javatpoint.com/javafx-with-eclipse#:~:text=We%20need%20to%20export%20the,to%20execute%20our%20java%20project.)
-</br>for [IntelliJ](https://www.jetbrains.com/help/idea/javafx.html#troubleshoot)
+2. Download repository as ZIP file- https://github.com/enxuantan1030/COMP2042_CW_hfyet3 </br>
+3. Run program in terminal.
 #Javadoc documentation Path
 /javadoc/com.example.demo/module-summary.html
 
@@ -20,7 +19,7 @@ Student ID: 20297487
   - **QUIT** button
   - **THEMES** drop down menu as 6 themes can be chosen
   - **DIFFICULTY** drop down menu as 5 difficulties can be chosen
-  - **LEADER BOARD** button
+  - **LEADER BOARD** button (Hish score table is sorted from highest to lowest)
   - Able to register new names with characters ONLY into file after clicking **START** 
 
 - Game Scene

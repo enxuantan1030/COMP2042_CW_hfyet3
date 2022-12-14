@@ -20,7 +20,7 @@ public abstract class QuitMenuButton extends GeneralComponents implements MenuIn
         Button menuquitButton = new Button("QUIT");
         btnstyle(menuquitButton, root);
         menuquitButton.relocate(520,400);
-        //when the quit button is clicked, a wondpw will pop out and ask for confirmation
+        //when the quit button is clicked, a window will pop out and ask for confirmation
         menuquitButton.setOnAction(actionEvent -> quitbtn(root));
     }
 

@@ -67,12 +67,11 @@ public class Main extends Application {
     /**
      * This variable is used to store the path to ShowScore.fxml
      */
-    public static URL score;
+    public static URL ShowScore;
     /**
      * This variable is used to store the imageview for koroks4.gif
      */
     public static Image image4;
-
     /**
      * This variable is used to play the audio 2048.mp3
      */
@@ -195,7 +194,7 @@ public class Main extends Application {
         data_path7x7 = Paths.get(data7x7.toURI()).toString();
 
         fxml = getClass().getResource("leaderboard.fxml");
-        score = getClass().getResource("ShowScore.fxml");
+        ShowScore = getClass().getResource("ShowScore.fxml");
 
         startGame(primaryStage);
     }

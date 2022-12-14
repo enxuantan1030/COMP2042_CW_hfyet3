@@ -5,108 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39fe3030-0101-44cf-a639-83409af24213" name="Changes" comment="Added change theme function, restart button when game over">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/InGameInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_android_support_appcompat_v7_23_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_android_support_appcompat_v7_23_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_82.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_36.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_7_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_jquery_3_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xdty_media_mediaplayer_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xdty_media_mediaplayer_0_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__tv_danmaku_ijk_media_ijkplayer_armv7a_0_4_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__tv_danmaku_ijk_media_ijkplayer_armv7a_0_4_4_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__tv_danmaku_ijk_media_ijkplayer_java_0_4_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__tv_danmaku_ijk_media_ijkplayer_java_0_4_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/20297487_SM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/20297487_SM.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/AddName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/AddName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ChooseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ChooseFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/Leaderboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/Leaderboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/ShowScore7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/UpdateScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Accounts/UpdateScore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGameInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/EndGameInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/DisplayAllScore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/DisplayScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/DisplayScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/DisplayTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/DisplayTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/GameOverTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/GameOverTitle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/Quit_button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/EndGame/Features/Quit_button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/General/GeneralComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/General/GeneralComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/General/GeneralizedComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/General/GeneralizedComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/ArrowKeysControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/ArrowKeysControls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/CannotMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/CannotMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GenerateGameCells/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GameMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/GameMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GameScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GameScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/MovementEmptyCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/MovementEmptyCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/SameCellNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/SameCellNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/Stopwatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/TextMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/GenerateGameCells/TextMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/InGame/Features/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/Difficulty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/GameTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/GameTitle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/QuitMenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/QuitMenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/Features/Theme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/MenuInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/MenuInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/StartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sm2048/Scenes/MenuGame/StartGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/2048ver2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore3.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore4.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore5.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore6.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore7.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sm2048/leaderboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/2048ver2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sm2048/ShowScore.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Account3x3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Account3x3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Account4x4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Account4x4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Account5x5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Account5x5.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Account6x6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Account6x6.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Account7x7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Account7x7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/AddName.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/AddName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ChooseFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ChooseFile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/Leaderboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/Leaderboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/UpdateScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/UpdateScore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Accounts/ShowScore.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/EndGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/EndGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/DisplayAllScore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/DisplayScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/DisplayScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/DisplayTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/DisplayTime.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/GameOverTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/GameOverTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/Quit_button.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/EndGame/Features/Quit_button.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/General/GeneralComponents.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/General/GeneralComponents.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/ArrowKeysControls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/CannotMove.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/Cell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/GameMovement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/GameScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/GameScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/MovementEmptyCell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/SameCellNumber.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/Stopwatch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/TextMaker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/InGame/Variables.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/Difficulty.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/Difficulty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/GameTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/GameTitle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/QuitMenuButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/QuitMenuButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/Theme.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/Features/Theme.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/Scenes/MenuGame/StartGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore3.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore4.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore5.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore6.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore7.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/leaderboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/leaderboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sm2048/ShowScore.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,9 +33,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>

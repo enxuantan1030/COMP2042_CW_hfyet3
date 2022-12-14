@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 
 /**
  * This class is a controller for leaderboard.fxml,
@@ -34,10 +32,11 @@ public class Leaderboard {
 
         Parent root1;
         try {
-            root1 = FXMLLoader.load(Main.score);
+            root1 = FXMLLoader.load(Main.ShowScore);
             Stage stage = new Stage();
             stage.setTitle("High Score");
-            stage.setScene(new Scene(root1, 500, 400));
+            Scene scene = new Scene(root1, 500, 400);
+            stage.setScene(scene);
             stage.show();
 
         }
@@ -63,7 +62,7 @@ public class Leaderboard {
      * This method is used to handle 3x3 button on press in leaderboard.fxml
      */
     public void handleButtonPress3(){
-        ShowScore.Content = 3;
+        ShowScore.lvl = 3;
         switchs();
 
     }
@@ -72,7 +71,7 @@ public class Leaderboard {
      * This method is used to handle 4x4 button on press in leaderboard.fxml
      */
     public void handleButtonPress4(){
-        ShowScore.Content = 4;
+        ShowScore.lvl = 4;
         switchs();
 
     }
@@ -81,7 +80,7 @@ public class Leaderboard {
      * This method is used to handle 5x5 button on press in leaderboard.fxml
      */
     public void handleButtonPress5(){
-        ShowScore.Content = 5;
+        ShowScore.lvl = 5;
         switchs();
 
     }
@@ -90,7 +89,7 @@ public class Leaderboard {
      * This method is used to handle 6x6 button on press in leaderboard.fxml
      */
     public void handleButtonPress6(){
-        ShowScore.Content = 6;
+        ShowScore.lvl = 6;
         switchs();
 
     }
@@ -99,7 +98,7 @@ public class Leaderboard {
      * This method is used to handle 7x7 button on press in leaderboard.fxml
      */
     public void handleButtonPress7(){
-        ShowScore.Content = 7;
+        ShowScore.lvl = 7;
         switchs();
 
     }
