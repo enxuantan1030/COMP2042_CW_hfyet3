@@ -1,5 +1,6 @@
 package com.sm2048.Scenes.EndGame.Features;
 
+import com.sm2048.Scenes.General.GeneralComponents;
 import javafx.scene.Group;
 import javafx.scene.text.Text;
 
@@ -10,16 +11,25 @@ import javafx.scene.text.Text;
  * @version 2.0
  * @since 2022-11-11
  */
-public abstract class GameOverTitle extends DisplayTime {
+public class GameOverTitle {
 
-    public void GameOver(Group root, boolean title) {
+    static GeneralComponents g = new GeneralComponents();
+
+    /**
+     *This method is used to set the EndGame Title
+     *
+     * @param root use to add EndGame Title component into EndGame scene
+     * @param title indicator for the users win the game
+     */
+    public static void GameOver(Group root, boolean title) {
         Text text;
+
         if(title){
-            text = new Text("YOU WIN!!!");
+            text = new Text("YOU WIN!!!"); //if users manage to reach 2048 in game
         }else {
             text = new Text("GAME OVER");
         }
-        text.relocate(230,250);
-        textstyle(text, root, 100);
+        text.relocate(210,250); //set the location of GameOver Title
+        g.textstyle(text, root, 100); //Style the text for GameOver Title
     }
 }
