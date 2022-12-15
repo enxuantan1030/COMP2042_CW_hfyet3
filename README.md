@@ -59,12 +59,13 @@ Reasons: Not familiar with it and not enough time
 - Combine the usage of JavaFX and JavaFX FXML(leader board and high score list)
 - Refactoring(details refers to Maintenance Performed section)
 
-#Maintenance Performed
+# Maintenance Performed
 - Extract methods from GameScene,StartGame,EndGame into several classes named with their features
 - Create Interface for GeneralComponents which stores methods' without name body
 - Create several packages with a consistent pattern</br>E.g EndGame package contains Features package, EndGame
 - Delete method sumCellNumbersToScore in GameScene as the score is added in method moveHorizontally and moveVertically(currently in GameMovement.java)
 - Delete argument int turn in randomFillNumber(currently in GameMovement.java) as it is not used.
+- More detailed information can be found in Github commits, javadoc
 
 # New Java Classes(Group by package)and resources
 - Accounts
