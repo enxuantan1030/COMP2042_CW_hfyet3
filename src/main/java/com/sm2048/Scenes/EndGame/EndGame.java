@@ -21,9 +21,9 @@ import javafx.stage.Stage;
  * @version 2.0
  * @since 2022-11-11
  */
-public class EndGame extends GeneralComponents{
-    private Group endGameRoot;
+public class EndGame extends GeneralComponents {
 
+    private Group endGameRoot;
     //static member holds only one instance of the Endgame class
     private static EndGame singleInstance = null;
 
@@ -82,7 +82,7 @@ public class EndGame extends GeneralComponents{
         });
 
         //Quit button
-       Quit_button.Quitbutton(endGameRoot);
+        Quit_button.Quitbutton(endGameRoot);
 
         //Display All Score
         LBbutton(endGameRoot);

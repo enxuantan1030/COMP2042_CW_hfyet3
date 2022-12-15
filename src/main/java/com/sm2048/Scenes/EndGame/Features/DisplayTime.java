@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
  * @version 1.0
  * @since 2022-11-11
  */
-public class DisplayTime extends GeneralComponents {
+public class DisplayTime {
 
     static GeneralComponents g = new GeneralComponents();
 

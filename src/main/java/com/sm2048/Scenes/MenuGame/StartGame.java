@@ -29,7 +29,7 @@ import static javafx.application.Application.launch;
  * @version 1.0
  * @since 2022-11-11
  */
-public class StartGame {
+public class StartGame extends GeneralComponents{
 
     /**
      * This variable is use to get the difficulty chosen by users
@@ -39,7 +39,6 @@ public class StartGame {
     private Group root;
     static int lvln = 7;
     String c1, c2;
-    GeneralComponents g = new GeneralComponents();
     /**
      *
      * This method has used the Design Pattern Singleton which is the lazy instantiation
@@ -87,7 +86,7 @@ public class StartGame {
         //Display "Theme"
         Text theme = new Text("Theme");
         theme.relocate(570,500); //set the location of Theme word
-        g.textstyle(theme, root, 27); // style the text Theme
+        textstyle(theme, root, 27); // style the text Theme
 
         //Drop down menu for choosing theme colour in game
         final ComboBox<String> themedropbox = new ComboBox<>();
@@ -107,7 +106,7 @@ public class StartGame {
         //Display "Difficulty"
         Text level = new Text("Difficulty");
         level.relocate(290,500);
-        g.textstyle(level, root, 25);
+        textstyle(level, root, 25);
 
         //Drop down menu for choosing level difficulty
         final ComboBox<String> leveldropbox = new ComboBox<>();
@@ -126,7 +125,7 @@ public class StartGame {
         //Display "ENTER YOUR NAME"
         Text reqname = new Text("ENTER YOUR NAME");
         reqname.relocate(377,620);
-        g.textstyle(reqname, root, 27);
+        textstyle(reqname, root, 27);
 
         //username
         TextField name= new TextField();
@@ -137,7 +136,7 @@ public class StartGame {
 
         //Menu start button
         Button startButton = new Button("START");
-        g.btnstyle(startButton, root);
+        btnstyle(startButton, root);
         startButton.relocate(260,400);
         //when start button is clicked, it will be directed to the game scene
         startButton.setOnAction(actionEvent -> {
@@ -182,10 +181,10 @@ public class StartGame {
         QuitMenuButton.Quitbutton(root);
 
         //Create leaderboard button
-        g.LBbutton(root);
+        LBbutton(root);
 
         //Create M button
-        g.Mutebutton(root);
+        Mutebutton(root);
 
     }
 

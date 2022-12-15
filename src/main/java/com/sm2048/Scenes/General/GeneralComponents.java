@@ -43,17 +43,17 @@ public class GeneralComponents implements GeneralizedComponents {
 
     public void quitbtn(Group root) {
 
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Quit Dialog");
-            alert.setHeaderText("Quit from this page");
-            alert.setContentText("Are you sure?");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quit Dialog");
+        alert.setHeaderText("Quit from this page");
+        alert.setContentText("Are you sure?");
 
-            //when "ok" is clicked, it will terminate the program
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                root.getChildren().clear();
-                System.exit(1);
-            }
+        //when "ok" is clicked, it will terminate the program
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            root.getChildren().clear();
+            System.exit(1);
+        }
 
     }
 
@@ -86,7 +86,7 @@ public class GeneralComponents implements GeneralizedComponents {
         lbButton.setOnAction(event -> {
             Parent root1;
             try {
-                root1 = FXMLLoader.load(Main.fxml);
+                root1 = FXMLLoader.load(Main.leaderboard);
                 Stage stage = new Stage();
                 stage.setTitle("Leader Board");
                 stage.setScene(new Scene(root1, 500, 400));

@@ -27,6 +27,11 @@ public class Variables {
      * This variable is used to set the length of each cell
      */
     public static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+    static TextMaker textMaker = TextMaker.getSingleInstance();
+    /**
+     * Cells in game
+     */
+    public static Cell[][] cells = new Cell[n][n];
     /**
      * This variable is used to initialize the value for score in the game
      */

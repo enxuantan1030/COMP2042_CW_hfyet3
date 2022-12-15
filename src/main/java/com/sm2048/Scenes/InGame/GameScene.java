@@ -25,8 +25,6 @@ import javafx.util.Duration;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import static com.sm2048.Scenes.InGame.Features.GameMovement.cells;
 import static com.sm2048.Scenes.InGame.Features.Variables.*;
 
 /**
@@ -39,7 +37,7 @@ import static com.sm2048.Scenes.InGame.Features.Variables.*;
     * @since 2022-11-11
     */
 
-public class GameScene extends ArrowKeysControls {
+public class GameScene extends GeneralComponents {
     boolean title;
     private static GameScene singleInstance = null;
     Text time;
@@ -49,7 +47,6 @@ public class GameScene extends ArrowKeysControls {
      */
     public Group GameRoot;
     Main main = new Main();
-    GeneralComponents g = new GeneralComponents();
     /**
      * This method is to prevent the instantiation from any other class.
      */
@@ -91,7 +88,7 @@ public class GameScene extends ArrowKeysControls {
         //display "TIME USED" text
         Text timeused = new Text();
         timeused.setText("TIME USED :");
-        g.textstyle(timeused, GameRoot, 30);
+        textstyle(timeused, GameRoot, 30);
         timeused.relocate(750, 200);
 
         //display the stopwatch
@@ -100,7 +97,7 @@ public class GameScene extends ArrowKeysControls {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(false);
         timeline.play(); //start stopwatch
-        g.textstyle(time, GameRoot, 30);
+        textstyle(time, GameRoot, 30);
         time.relocate(750, 250);
 
         //create number of cells
@@ -116,13 +113,13 @@ public class GameScene extends ArrowKeysControls {
         //display "SCORE" text
         Text score = new Text();
         score.setText("SCORE :");
-        g.textstyle(score, GameRoot, 30);
+        textstyle(score, GameRoot, 30);
         score.relocate(750, 100);
 
         //display score earned by users
         Text scoreText = new Text();
         scoreText.relocate(750, 150);
-        g.textstyle(scoreText, GameRoot, 30);
+        textstyle(scoreText, GameRoot, 30);
         scoreText.setText("0");
 
         //display shortcuts instructions
@@ -131,7 +128,7 @@ public class GameScene extends ArrowKeysControls {
         intruct.setText("Shortcuts:\nPress M - Return Menu\nPress Esc - Quit Game\nPress P - Control Music");
         intruct.setFont(Font.font("Courier New", FontWeight.BOLD,20));
         intruct.setFill(Color.web("#E5E7E9"));
-        intruct.relocate(710, 605);
+        intruct.relocate(710, 300);
 
         //Create two numbered cells start of the game
         GameMovement.randomFillNumber();
@@ -140,15 +137,15 @@ public class GameScene extends ArrowKeysControls {
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> Platform.runLater(() -> {
             int haveEmptyCell;
             if (key.getCode() == KeyCode.DOWN) {
-                GameScene.this.moveDown();
+                ArrowKeysControls.moveDown();
             } else if (key.getCode() == KeyCode.UP) {
-                GameScene.this.moveUp();
+                ArrowKeysControls.moveUp();
             } else if (key.getCode() == KeyCode.LEFT) {
-                GameScene.this.moveLeft();
+                ArrowKeysControls.moveLeft();
             } else if (key.getCode() == KeyCode.RIGHT) {
-                GameScene.this.moveRight();
+                ArrowKeysControls.moveRight();
             } else if (key.getCode() == KeyCode.ESCAPE) {
-                g.quitbtn(GameRoot);
+                quitbtn(GameRoot);
             } else if (key.getCode() == KeyCode.M) {
                 //return to menu
                 Alert gamealert = new Alert(Alert.AlertType.CONFIRMATION);

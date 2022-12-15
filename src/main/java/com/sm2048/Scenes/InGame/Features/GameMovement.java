@@ -17,6 +17,8 @@ import static com.sm2048.Scenes.InGame.Features.Variables.n;
  * @since 2022-11-11
  */
 public class GameMovement {
+    static Cell[][] cells = Variables.cells;
+    static TextMaker textMaker = Variables.textMaker;
 
     private static GameMovement singleInstance = null;
 
@@ -38,11 +40,6 @@ public class GameMovement {
     }
 
     static GameScene GS = GameScene.getSingleInstance();
-    static TextMaker textMaker = TextMaker.getSingleInstance();
-    /**
-     * Cells in game
-     */
-    public static Cell[][] cells = new Cell[n][n];
 
     /**
      *This method is used to generate random numbered cells in the game

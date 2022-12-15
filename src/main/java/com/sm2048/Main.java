@@ -63,7 +63,7 @@ public class Main extends Application {
     /**
      * This variable is used to store the path to leaderboard.fxml
      */
-    public static URL fxml;
+    public static URL leaderboard;
     /**
      * This variable is used to store the path to ShowScore.fxml
      */
@@ -193,7 +193,7 @@ public class Main extends Application {
         assert data7x7 != null;
         data_path7x7 = Paths.get(data7x7.toURI()).toString();
 
-        fxml = getClass().getResource("leaderboard.fxml");
+        leaderboard = getClass().getResource("leaderboard.fxml");
 
         ShowScore = getClass().getResource("ShowScore.fxml");
 
